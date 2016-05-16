@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    *{
+        margin: 0;
+        padding: 0;
+    }
+        .banner{
+            width: 100%;
+        }
+        .banner img{
+            width: 100%;
+            height: 540px;
+            border: none;
+        }
+
+        a{
+            text-decoration: none;
+        }
+        ul{
+            list-style: none;
+        }
+        .nva{
+            z-index: 5;
+            width: 100%;
+            position: static;
+            top: 0px;
+            left: 0;
+        }
+        .nva ul{
+            width: 100%;
+
+            height: 50px;
+            line-height: 50px;
+            background: sandybrown;
+        }
+        .nva ul li{
+            float: left;
+        }
+    .nva ul li a{
+        display: inline-block;
+        font-size: 24px;
+        color: #aa00aa;
+        padding: 0 40px;
+    }
+    .select{
+        background: green;
+    }
+        p{
+            width: 100px;
+            height: 40px;
+        }
+        .one2{
+            background: antiquewhite;
+        }
+        .one3{
+            background: tan;
+        }
+        .one4{
+            background: saddlebrown;
+        }
+        .one5{
+            background: thistle;
+        }
+        .one6{
+            background: aqua;
+        }
+
+        .one7{
+            background: cornflowerblue;
+        }
+
+    </style>
+</head>
+<body>
+<div class="banner">
+    <img src="banner.jpg"  alt=""/>
+</div>
+<div class="nva" id="nva">
+    <ul id="ul">
+        <li><a class="select"  href="">首页</a></li>
+        <li><a href="">one2</a></li>
+        <li><a href="">one3</a></li>
+        <li><a href="">one4</a></li>
+        <li><a href="">one5</a></li>
+        <li><a href="">one6</a></li>
+        <li><a href="">one7</a></li>
+    </ul>
+</div>
+<div class="count">
+    <div class="one">
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+    </div>
+    <div class="one2">
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+
+    </div>
+    <div class="one3">
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+    </div>
+    <div class="one4">
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p>
+
+        </p>
+    </div>
+    <div class="one5">
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p>
+
+        </p>
+    </div>
+    <div class="one6">
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p>
+
+        </p>
+    </div>
+    <div class="one7">
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+        <p></p>
+
+
+    </div>
+</div>
+
+
+<script>
+    /*固定菜单栏*/
+    window.onscroll=function(){
+        var top=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop;
+        var node=document.getElementById('nva');
+        if(top>540){
+            node.style.position='fixed';
+        }else{
+            node.style.position='static';
+            node.style.zIndex="0";
+        }
+    }
+    /*固定菜单栏*/
+
+    var oUl=document.getElementById("ul");
+    var oLis=oUl.getElementsByTagName("li");
+    for(var i=0;i<oLis.length;i++){
+        oLis[i].onclick= function () {
+            this.className="select"
+
+        }
+    }
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

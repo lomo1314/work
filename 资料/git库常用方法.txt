@@ -1,0 +1,205 @@
+------------------------------------------------
+git 常用：
+https://github.com/login
+1、fork 把仓库里的东西复制一份到自己仓库
+2、clone 本地代码和自己仓库连接，名字origin
+     git clone https://github.com/wangxiaobo/JavaScript-201508.git（自己仓库的地址） 
+3、在自己本地增加和仓库的联系
+    git remote add wangxiaobo https://github.com/g/JavaScript-201508.git（别人仓库地址）
+    前三部做一
+次即可
+    需要在克隆到本地的文件夹里面右键git bash
+--》查看是否连接成功 git remote -v
+-->已经存在就删除 git remote rm wangxiaobo(自己起的名字)
+4、拉取
+git remote update wangxiaobo(自己起的名字)
+git pull wangxiaobo(自己名字) master
+
+5、把本地最新代码上传到自己的github 仓库（在要上传的文件夹中）
+git add -A
+git commit -m"更新讲义"
+(建议在每一次推送之前先拉取) git pull origin master
+git push origin master  提示输入用户名 密码
+
+git 用户名370297713@qq.com 密码 wangxiaobo90
+
+-----------------------贡献代码------------------
+先提交到自己仓库
+git add -A
+git commit -m"贡献的代码"
+git pull origin master
+git push origin master 
+
+发送new pullrequest
+右边提交到左边
+create newpullrequest
+
+-------------------------------------------------------------------------其他-----------------------------------------
+1、安装
+2、检查安装成功：
+    git --version
+
+3、用户设置：
+git config --global user.name "wangxiaobo"    
+git config --global user.email "370297713@qq.com" 
+
+4、查询：是否成功
+git config -l
+
+5、显示所有配置：
+git config --list --global 
+
+6、创建版本库：
+仓库：repository
+在一个盘里右键 git bashhere
+创建一个新目录
+mkdir zfpxgit
+
+7、进入目录：
+cd zfpxgit
+
+8、显示当前所在目录：
+pwd
+
+9、初始化仓库
+git init 
+Initialized empty Git repository in E:/zfpxgit/.git/
+.git表示隐藏目录
+
+10、隐藏目录如何查看：计算机-》工具-》文件夹选项-》查看-》显示隐藏
+
+11、显示所有隐藏文件
+ls -al
+./  ../  .git/    .git不能动
+
+12、工作区域
+暂存区、历史区看不到，但是内容和工作区一样
+工作区（工作目录） git add-->暂存区 git commit -->历史区（可以检出check out）
+
+
+13、echo xxx > yyy.txt 表示把 xxx内容保存到yyy.html中
+$ echo 1 > index.html   // 把1输出到新创建的index.html文件中  > 表示清空并写入
+$ echo 2 >> index.html // 追2加到index.html中 >>表示在原来文件的末尾追加
+$ cat index.html //查看文件内容
+1
+2 
+
+14、git add index.html 把工作区的文档提交到暂存区
+     git commit index.html -m "添加描述"
+(没有添加-m会弹出一个提示框，可以输入注释按esc退出编辑模式，再输入:wq退出此编辑器；编辑的时候i是插入)
+     git log 查看历史所有
+
+15、查看修改状态：git status
+      红色代表工作区和暂存区的差异，绿色是暂存区和历史区的区别
+
+16、git status -s
+       M index.html  第一列绿色表示暂存区和历史区的改动，第二列红色表示工作区和暂存区的改动
+17、git diff 查看内容差异 
+git a/index.html b/index.html
+--- a/index.html //---代表源文件
++++ b/index.html //+++代表目标文件  
+  1 //空格开头的行，是源文件和目标文件中都出现的行
+ 2 //空格开头的行，是源文件和目标文件中都出现的行
+ -3 //-开头的行，是只出现在源文件中的行
+ +3  //+开头的行，是只出现在目标文件中的行
++diff 增加了一行 //+开头的行，是只出现在目标文件中的行
+
+
+17、要随时掌握工作区和暂存区的状态，使用git status命令。
+
+如果git status告诉你有文件被修改过，
+
+git diff 可查看工作区和暂存区的差异。
+git diff HEAD 可查看工作区和HEAD（当前工作分支）相比的差异
+git diff --cached 可查看暂存区和历史区的差异.
+
+18、git log --oneline  
+      git log --graph
+19、git reset --hard HEAD^ 把历史区重置到上一个提交
+       git reset --hard 521cb3d
+
+ git reflog 记录你的每一次命令
+
+现在总结一下：
+
+HEAD 指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset --hard commit_id。
+
+穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。
+
+要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。
+
+可以通过grep来过滤提交日志
+
+git reset –hard：彻底回退到某个版本，回退 工作区 、历史区 和 暂存区 。
+
+
+
+
+-----------------------------------------------------------------------------------------
+1、注册账号
+2、验证邮箱
+3、创建仓库
+4、下载到本地
+6、查看远程仓库 git remote -v 
+5、推送到服务器 git push origin master   推送之前最好先git pull origin master 
+输入用户名 密码
+拉取远程服务器代码git pull origin master 
+
+
+cd .. 退到根目录
+git clone 地址
+rm -rf test 删除
+git clone 
+ls 查询目录下的内容
+
+git add -A 添加所有文件
+
+
+------------------------------
+forks 把别人的东西复制一份拿过来
+选中仓库最下面 delete repository 
+-------------------------------------------------------------------------------1.安装
+2.检查安装成功
+git --version
+3.
+git config --global user.name "wangxiaobo"    
+git config --global user.email "370297713@qq.com"   
+4.显示所有配置
+git config --list --global 
+5.创建空目录
+mkdir zfpxgit
+6.进入空目录
+cd zfpxgit
+7.显示当前所在目录
+pwd
+8. git init
+初始化本地仓库
+9. 显示隐藏文件
+ls -a
+10. git log
+查看提交的历史
+11.查看修改状态
+ git status
+12.查看内容差异
+git diff
+1.注册github账号
+2.验证邮箱 
+3.创建仓库
+______________________________________________________________________________-
+组长交作业
+把本组作业提交到自己仓库.
+git add -A
+git commit -m"            ddwww"
+git pull origin master
+git push 
+
+
+
+
+
+
+
+
+
+
+

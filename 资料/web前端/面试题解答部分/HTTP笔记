@@ -1,0 +1,96 @@
+起始行，方法/路径/http版本
+首部 （， 通用 请求 响应 实体首部 扩展 请求
+请求首部 cookie use-A
+响应首部 set-cookie server
+实体首部 content-type:text/html content-length
+扩展首部 自定义的）
+
+响应
+起始行 HTTP版本 状态码 状态描述
+
+http是一个超文本传输协议 事务
+
+Date是在首部里 所以如果只要获取时间只需要head方法
+
+为什么要定义5中方法而不是post和get两种？
+restful(表征状态转移是一种软件架构风格；核心思想增删改查，各司其职)
+put 增加
+delete 删除
+post 修改
+get 查询
+head 没想响应主体只有响应首部
+
+get系和post系的不同点，共同点是都与server进行交互
+1.get系没有请求主体
+2.get系会被缓存
+3.get系有大小限制
+4.安全问题，get系明文发送可以通过URL看到。post系把data放到请求主体，无法看见
+
+状态码
+1开头 信息提示 连接成功返回101
+socket管即时通讯
+H5 有web socket
+1.通过http建立；连接 返回的响应码就是101
+2.建立TCP 网络交互经过TCP
+
+301 永久转移 老域名不用了，不想再被访问搜索不到这个域名。会降低搜索引擎的权重
+302 临时转移 360buy==京东。老域名还在用输出360buy会调到京东
+
+303 重定向 负载均衡 集群
+
+304 缓存
+两个同时存在的响应头
+last-modified GMT时间表示文件最后一次修改时间 只能精确到秒 11:35
+etag 散列值 通过sha1算法算出的 12345
+
+请求首部
+if-modified-since 11:35
+if-none-match 123456
+304 代表没有改变
+假如服务器改动了文件 请求发送到服务器 服务器返回200
+并且变为 11:50
+       1234555
+浏览器会刷新if-modified-since 11:50
+      if-none-match 1234555
+
+cache-control 缓存的秒数
+expires  GMT时间 缓存到的时间
+
+4开头的服务器错误
+400参数错误 bad request
+401未认证 弹出登录框 not authentication
+403密码什么的错误 forbidden
+404 not found 未找到
+417 资源过大
+
+5开头服务器错误
+500 服务器内部错误 internal server error
+503 服务器并发太高
+
+MIME type
+xxx/xxx
+描述实体是什么类型 处理输出类型
+text/html
+text/css
+text/javascripy
+image/png
+image/jpg
+image/guf
+application/json
+application/octet-stream
+前面大类/后面小类
+告诉浏览器以什么格式处理数据
+
+URL scheme：//(username：password@)hostname：port/path?querystring#hash
+协议：
+http 80
+https 443
+ftp 文件传输协议
+smtp 传输邮件
+telnet
+
+http1.0和2.0的区别
+1.多路复用 多个请求可以用一个TCP
+2.首部压缩 压缩cookie
+3.服务器推送 不需要request也可以response 像手机应用通知
+

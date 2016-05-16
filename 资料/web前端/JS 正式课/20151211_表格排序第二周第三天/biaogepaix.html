@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link type="text/css" rel="stylesheet"  href="css/tab.css"/>
+</head>
+<body>
+<table id="tab" cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+        <th>姓名</th>
+        <th class="cursor">年龄</th>
+        <th class="cursor">成绩</th>
+        <th class="cursor">性别</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/json.js"></script>
+<script type="text/javascript">
+
+    var oTab=document.getElementById("tab");
+    var tBody=oTab.tBodies[0];
+    var tHead=oTab.tHead;
+    var oThs=tHead.rows[0].cells;
+    var oRows=tBody.rows;
+    /*循环data中的每一项，进行数据绑定，并且创建tr 以及遍每一项添加到创建的td中。利用文档碎片进行操作*/
+    function bindData(){
+        var frg=document.createDocumentFragment();
+        for(var i=0;i<data.length;i++){
+            var cur=data[i];
+            /*数据初始化*/
+            cur.name=cur.name||"--";
+            cur.age=cur.age||18;
+            cur.score=cur.score||60;
+            cur.sex=cur.sex===0?"男":"女";
+            var oTr=document.createElement("tr");
+            for(var key in cur){
+                var oTd=document.createElement("td");
+                oTd.innerHTML=cur[key];
+                oTr.appendChild(oTd);
+            }
+            frg.appendChild(oTr);
+        }
+        tBody.appendChild(frg);
+        frg=null;
+    }
+
+    bindData();
+
+    /*隔行换色*/
+    function changeBg(){
+        for(var i=0;i<oRows.length;i++){
+            oRows[i].className=i%2===1?"even":null;
+        }
+    }
+    changeBg();
+
+    /*将oRows类数组转化成数组，并且执行sort方法，并且标记升降序，最终将排序好的数字添加到tBody中*/
+
+    function likeAry(n){
+        var ary=utils.listToArray(oRows);
+        ary.sort(function(a,b){
+            var curIn= a.cells[n].innerHTML;
+            var nextIn= b.cells[n].innerHTML;
+            var curInNum=parseFloat(curIn);
+            var nextInNum=parseFloat(nextIn);
+            var num=isNaN(curInNum)?curIn.localeCompare(nextIn):curInNum-nextInNum;
+            return num;
+        });
+        /*清空样式*/
+        for(var k=0;k<oThs.length;k++){
+            if(k!==n){
+                oThs[k].flog=null;
+            }
+        }
+
+        if(this.flog==="asc"){
+            ary.reverse();
+            this.flog="desc"
+        }else{
+            this.flog="asc";
+        }
+
+
+        var frg=document.createDocumentFragment();
+        for(var i=0;i<ary.length;i++){
+            frg.appendChild(ary[i]);
+        }
+        tBody.appendChild(frg);
+        frg=null;
+        changeBg();
+    }
+
+    /*给数据进行绑定点击事件*/
+    for(var i=0;i<oThs.length;i++){
+        var oTh=oThs[i];
+        if(oTh.className==="cursor"){
+            oTh.cat=i;
+            oTh.onclick=function(){
+                likeAry.call(this,this.cat);
+            }
+        }
+    }
+
+
+
+
+</script>
+ </body>
+</html>

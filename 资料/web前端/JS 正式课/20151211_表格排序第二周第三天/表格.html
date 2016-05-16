@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/tab.css"/>
+</head>
+<body>
+<table id="tab" cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+        <th>姓名</th>
+        <th class="cursor">年龄</th>
+        <th class="cursor">成绩</th>
+        <th class="cursor">性别</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/json.js"></script>
+<script type="text/javascript">
+    /*想要操作谁，就先获取谁*/
+    var oTab=document.getElementById("tab");
+    var tBody=oTab.tBodies[0];
+    var tHead=oTab.tHead;
+    var oThs=tHead.rows[0].cells;
+    var oRows=tBody.rows;
+
+    /*定义一个方法，创建 tbody中的tr 和td 。并且遍历data中的每一项 存在td中*/
+    function chang(){
+        var frg=document.createDocumentFragment();
+        for(var i=0;i<data.length;i++){7
+            var cur=data[i];
+            cur.name=cur.name||"--";
+            cur.age=cur.age||18;
+            cur.score=cur.score||0;
+            cur.sex=cur.sex ==0?"男":"女";
+            var oTr=document.createElement("tr");
+            for(var key in cur){
+                var oTd=document.createElement("td");
+                oTd.innerHTML=cur[key];
+                oTr.appendChild(oTd);
+            }
+            frg.appendChild(oTr);
+        }
+       tBody.appendChild(frg);
+        frg=null;
+    }
+    chang();
+
+    /* 各行变色方法*/
+    function bg(){
+        for(var i=0;i<oRows.length;i++){
+            oRows[i].className=i%2?"even":null;
+        }
+    }
+    bg();
+
+    /*讲类数组 转化成数组，之后进行排序比较，最后升降序判断， 最终排序完成后的添加到tbody中 */
+           function listAry(cat){
+               var ary= utils.listToArray(oRows);
+               ary.sort(function (a,b) {
+                   /*a,b 项 进行判断， 是否是有效数字，*/
+                   var curIn= a.cells[cat].innerHTML;
+                   var nextIn= b.cells[cat].innerHTML;
+                   var curInNum=parseFloat(curIn);
+                   var nextInNum=parseFloat(nextIn);
+                   if(isNaN(curInNum)){
+                       return curIn.localeCompare(nextIn);
+                   }
+                   return curInNum-nextInNum;
+       });
+
+       /*升降序比较*/
+
+        for(var k=0;k<oThs.length;k++){
+            if(k!==cat){
+                oThs[k].flog=null;
+            }
+        }
+
+       if(this.flog==="acc"){
+           ary.reverse();
+           this.flog="add";
+       }
+       else{this.flog="acc"}
+
+    var frg=document.createDocumentFragment();
+    for(var i=0;i<ary.length;i++){
+        frg.appendChild(ary[i]);
+    }
+    tBody.appendChild(frg);
+    frg=null;
+       bg();
+   }
+
+    /*最终绑定点击事件*/
+
+    for(var i=0;i<oThs.length;i++){
+        var oTh=oThs[i];
+        if(oTh.className==="cursor"){
+            oTh.cat=i;
+            oTh.onclick=function(){
+                listAry.call(this,this.cat);
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

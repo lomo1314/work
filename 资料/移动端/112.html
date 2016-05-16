@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title></title>
+    <link rel="stylesheet" href="animate.css"/>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        #div1{
+            width: 100px;
+            height: 100px;
+            /* 不需要具体宽高 ， 盒子在屏幕居中 */
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            background: green;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script src="zepto.js"></script>
+<script>
+    $("#div1").tap(function(){
+        $(this).addClass("animated bounce")
+    })
+
+</script>
+
+
+<!--<script type="text/javascript">
+    var oDiv=document.querySelector("#div1");
+    oDiv.onclick= function () {
+        this.className="animated bounce"
+    }
+</script>-->
+
+
+
+
+</body>
+</html>

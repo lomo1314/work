@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: palegreen;
+            position: absolute;
+            top: 10px;
+            left: 190px;
+            opacity: 0.1;
+            filter: alpha(opacity=10);
+        }
+
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script type="text/javascript">
+    function getCss(ele, attr) {
+        if (window.getComputedStyle) {
+            return parseFloat(getComputedStyle(ele, null)[attr]);
+        } else {//专门解决IE6~8的问题
+            if (attr === 'opacity') {
+                //filter:alpha(opacity=10)
+                var reg = /alpha\(opacity=(\d+)\)/;
+                var str = ele.currentStyle.filter;
+                if (reg.test(str)) {
+                    RegExp.$1;//这就是匹配的正则中的第一个分组的值
+                    return RegExp.$1 / 100;
+                } else {
+                    return 1;//如果滤镜样式没有写，或者写了，但没有写opacity则上面的判断为false，则应该把默认值1返回；
+                }
+            }
+        }
+        return parseFloat(ele.currentStyle[attr]);
+    }
+    function setCss(ele, attr, value) {
+        if (attr === 'opacity') {
+            ele.style.opacity = value;
+            ele.style.filter = 'alpha(opacity=' + value * 100 + ')';
+        } else {
+            ele.style[attr] = value + "px";
+        }
+    }
+    /*
+     oTarget:对象(保存法)
+     */
+    function animate(ele, oTarget, duration, callback) {
+        var oBegin = {};//用来保存各方向的开始值
+        var oChange = {};//用来保存各方向的距离值
+        var counter = 0;//只是一个标识，或者说是一个计数器
+        for (var attr in oTarget) {
+            var target = oTarget[attr];
+            var begin=getCss(ele,attr);
+            var change=target-begin;
+            //分别把每个属性(维度)上的值分别保存在各自对应的对象上
+            if (change) {//确保change不是0，再保存，就是说:只保存有效的运动维度
+                oBegin[attr] = begin;
+                oChange[attr] = change;
+                counter++;//如果有有效值则让计数器累加一次
+            }
+        }
+        if (counter === 0) {//如果没有运动距离；就退出方法；
+            return
+        }
+
+        var times=0;
+        var interval=15;
+        clearInterval(ele.timer);
+
+        function step(){
+
+            times+=interval;
+            if(times<duration){
+                for(attr in oChange){
+                    var begin=oBegin[attr];
+                    var value=times/duration*change+begin;
+                    setCss(ele,attr,value);
+                }
+            }else{
+                for(var attr in oTarget){
+                    var target=oTarget[attr];
+                    setCss(ele,attr,target);
+                }
+                window.clearInterval(ele.timer);
+                ele.timer=null;
+                if(typeof callback==="function"){
+                    callback();
+                }
+
+
+            }
+
+        }
+        ele.timer=window.setInterval(step,interval)
+
+    }
+    var oDiv=document.getElementById("div1");
+    oDiv.onclick = function () {
+        animate(this, {left: 400, top: 333, width: 200, height: 200, opacity: 1})
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+
+
+</head>
+<body>
+<input type="button" value="按钮1"/>
+<input type="button" value="按钮2"/>
+<input type="button" value="按钮3"/>
+<input type="button" value="按钮4"/>
+<input type="button" value="按钮5"/>
+
+
+
+<script type="text/javascript">
+    var ary=["blue","red","black","yellow","pink"];
+    var oBtn=document.getElementsByTagName("input");
+    function changeTab(){
+        for(var i=0;i<oBtn.length;i++){
+            document.body.style.backgroundColor=ary[this.index]
+        }
+    }
+    for(var i=0;i<oBtn.length;i++){
+        var cur=oBtn[i]
+        cur.index=i;
+        cur.onclick=changeTab
+
+
+    }
+
+</script>
+</body>
+</html>

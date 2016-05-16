@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        input {
+            outline: none;
+            border: none;
+        }
+
+        .box {
+            width: 600px;
+            border: 1px solid #005ea7;
+            margin: 20px auto;
+            box-shadow: 3px 3px 10px 0 #CCCCCC;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        h2 {
+            height: 35px;
+            line-height: 35px;
+            background: -webkit-linear-gradient(top left, #00A5FF, #FF6500, #96E555);
+        }
+
+        h2 span {
+            display: inline-block;
+            width: 200px;
+            text-align: center;
+        }
+
+        #list {
+            height: 300px;
+        }
+
+        #list li {
+            height: 30px;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+        #list li.bg {
+            background: #FF6500;
+        }
+
+        #list li span {
+            width: 200px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .box-page {
+            float: right;
+            margin-top: 20px;
+
+        }
+
+        .box-page .btn {
+            float: left;
+            width: 50px;
+            height: 20px;
+            line-height: 20px;
+            border: 1px solid #11a3ff;
+            text-align: center;
+            margin-right: 5px;
+            cursor: pointer;
+
+        }
+
+        .box-page .page {
+            float: left;
+        }
+
+        .box-page .page li {
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            float: left;
+            border: 1px solid #11a3ff;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        .box-page .page li.select {
+            background: #FFF38F;
+            color: seagreen;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <h2><span>学号</span><span>性别</span><span>分数</span></h2>
+    <ul id="list">
+    </ul>
+    <div class="box-page" id="boxPage">
+        <div class="btn" id="btn1">首页</div>
+        <div class="btn" id="btn2">上一页</div>
+        <ul class="page" id="page">
+
+        </ul>
+        <div class="btn" id="btn3">下一页</div>
+        <div class="btn" id="btn4">尾页</div>
+        <input type="text" class="btn" id="btnInp"/>
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+    (function () {
+
+        /*获取所需要操作的*/
+        var list = document.getElementById("list");
+        var listLI = list.getElementsByTagName("li");
+        var boxPage = document.getElementById("boxPage");
+        var page = document.getElementById("page");
+        var pageLI = page.getElementsByTagName("li")
+        var btnInp = document.getElementById("btnInp")
+        var count = 10, curPage = 1, totalPage = 1, dataAry = null;
+
+        /*利用callback 操作*/
+        function callback(data) {
+            dataAry = data;
+            totalPage = Math.ceil(data.length / count);
+            pageList();
+            bindList();
+            bindEvent();
+        }
+
+        /*绑定page*/
+        function pageList() {
+            var str = "";
+            for (var i = 1; i <= totalPage; i++) {
+                str += "<li>" + i + "</li>"
+            }
+            page.innerHTML = str;
+            pageBg()
+        }
+
+        /*改变颜色*/
+        function pageBg() {
+            for (var i = 0; i < pageLI.length; i++) {
+                pageLI[i].className = (i + 1) === curPage ? "select" : null;
+            }
+        }
+
+        /*页面添加数据*/
+        function bindList() {
+            var str = "";
+            for (var i = (curPage - 1) * count; i < curPage * count; i++) {
+                var cur = dataAry[i];
+                if (!cur)break;
+                cur.sex = cur.sex === 1 ? "男" : "女";
+                str += "<li num='" + cur["num"] + "'>"
+                for (var key in cur) {
+                    str += "<span>" + cur[key] + "</span>"
+                }
+                str += "</li>"
+            }
+            list.innerHTML = str;
+            listBg();
+
+            for(var k=0;k<listLI.length;k++){
+                listLI[k].onclick=function(){
+                    window.location.href="detail.html?num="+this.getAttribute("num")
+                }
+            }
+
+        }
+
+        /*隔行变色*/
+        function listBg() {
+            for (var i = 0; i < listLI.length; i++) {
+                listLI[i].className = i % 2 === 1 ? "bg" : null;
+            }
+        }
+
+        /*绑定点击事件*/
+        function bindEvent() {
+            boxPage.onclick = function (e) {
+                e = e || window.event;
+                var tar = e.target || e.srcElement;
+                if (tar.id === "btn1") {
+                    curPage = 1
+                } else if (tar.id === "btn2") {
+                    if (curPage > 1) {
+                        curPage--;
+                    }
+                } else if (tar.id === "btn3") {
+                    if (curPage < totalPage) {
+                        curPage++;
+                    }
+                } else if (tar.id === "btn4") {
+                    curPage = totalPage;
+                } else if (tar.tagName.toLocaleLowerCase() === "li") {
+                    curPage = parseFloat(tar.innerHTML);
+                } else {
+                    return
+                }
+                bindList();
+                pageBg();
+            }
+            btnInp.onkeyup = function (e) {
+                e = e || window.event;
+                if (e.keyCode !== 13)return;
+                var reg = /^\d+$/, flag = true;
+                var val = this.value.replace(/(^ +| +$)/g, "");
+                if(reg.test(val)){
+                    val=Number(val);
+                    if(val>=1&&val<=totalPage){
+                        curPage=val;
+                        bindList();
+                        pageBg();
+                    }else{
+                        flag=false;
+                    }
+                }else{
+                    flag=false;
+                }
+                if(flag===false){
+                   this.value="";
+                }
+
+            }
+
+        }
+
+        var xhr = createXHR();
+        xhr.open("get", "data.txt?_=" + Math.random);
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4 && /^2\d{2}$/.test(this.status)) {
+                var data = JSON in window ? JSON.parse(this.responseText) : eval("(" + this.responseText + ")");
+                typeof callback === "function" ? callback(data) : null;
+            }
+        }
+        xhr.send();
+    })()
+    function createXHR() {
+        var xhr = null;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest;
+        } else if (new ActiveXObject("Microsoft.XMLHTTP")) {
+            xhr = new ActiveXObject("Microsoft.XMLHTTP")
+        } else if (new ActiveXObject("Msxml2.XMLHTTP")) {
+            xhr = new ActiveXObject("Msxml2.XMLHTTP")
+        } else if (new ActiveXObject("Msxml3.XMLHTTP")) {
+            xhr = new ActiveXObject("Msxml3.XMLHTTP")
+        }
+        return xhr
+    }
+
+</script>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #div1,#div2,#div3{
+            top: 0;
+            left: 0;;
+            width: 100px;
+            height: 100px;
+            background: aqua;
+            position: absolute;
+        }
+        #div2{
+            top: 150px;
+        }
+        #div3{
+            top: 300px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+<div id="div3"></div>
+
+
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript">
+    var oDiv = document.getElementById("div1");
+    var oDiv2=document.getElementById("div2");
+    var oDiv3=document.getElementById("div3");
+    /*获取两边的边界值*/
+    var winL = 0;
+    var winR = (document.documentElement.clientWidth || document.body.clientWidth) - oDiv.offsetWidth;
+
+    function move(target) {
+        var _this = this;
+        ~function _move() {
+            window.clearTimeout(_this.timer);
+            var curL = utils.getCss(_this, "left");
+            if (curL  > target) {
+                if (curL-10 <= target) {
+                    _this.style.left = target + "px";
+                    move.call(_this, winR);
+                    return;
+                }
+
+                _this.style.left = curL - 10 + "px";
+            }
+            else if (curL < target) {
+                if (curL + 10 >= target) {
+                    _this.style.left = target + "px";
+                    move.call(_this, winL);
+                    return;
+                }
+                _this.style.left = curL + 10 + "px";
+
+            } else {
+                return;
+            }
+            _this.timer = window.setTimeout(_move, 10);
+        }()
+    }
+    oDiv.onclick = function () {
+        move.call(this, winR);
+        window.setTimeout(function(){
+             move.call(oDiv2,winR);
+            window.setTimeout(function(){
+                move.call(oDiv3,winR);
+            },500);
+        },500);
+    };
+
+
+
+
+</script>
+</body>
+</html>

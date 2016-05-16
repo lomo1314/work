@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <!--移动端前面必须加viewport-->
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
+    <title>图片延迟加载</title>
+    <style type="text/css">
+        body, div, span, ul, li, h2, p {
+            margin: 0;
+            padding: 0;
+            font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+            font-size: 14px;
+            -webkit-user-select: none;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        img {
+            border: none;
+        }
+
+        #newsList {
+            padding: 10px;
+        }
+
+        #newsList li {
+            position: relative;
+            padding: 10px 0;
+            height: 60px;
+            border-bottom: 1px dashed #ccc;
+        }
+
+        #newsList li img {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 75px;
+            height: 60px;
+        }
+
+        #newsList li div {
+            height: 60px;
+            margin-left: 80px;
+        }
+
+        #newsList li h2 {
+            height: 20px;
+            line-height: 20px;
+
+            /*当一行的内容超出的时候自动进行截取并且以...结束*/
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        #newsList li p {
+            height: 40px;
+            line-height: 20px;
+            font-size: 13px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+<ul id="newsList">
+
+</ul>
+<script type="text/javascript" src="js/json.js"></script>
+<script type="text/javascript">
+    //    /*写一个方法，获取当前元素到body 的距离 运算*/
+    //    function offset(curEle) {
+    //        var l = curEle.offsetLeft;
+    //        var t = curEle.offsetTop;
+    //        var p = curEle.offsetParent;
+    //        while (p.tagName.toLowerCase() !== "body") {
+    //            if (navigator.userAgent.indexOf("MSIE 8.0")===-1) {
+    //                l += p.clientLeft;
+    //                t += p.clientTop;
+    //            }
+    //
+    //            l += p.offsetLeft;
+    //            t += p.offsetTop;
+    //            p = p.offsetParent;
+    //        }
+    //        return {left: l, top: t};
+    //    }
+    //
+    //    /*想要操作谁，就先获取谁 获取ul 以及定义ul下所有的img图片的集合为imgList*/
+    //    var newsList = document.getElementById("newsList");
+    //    var imgList = newsList.getElementsByTagName("img");
+    //
+    //    /*绑定数据 首先定义空字符串，利用字符串拼接的方法，将dataAry中的数据绑定到页面中。*/
+    //
+    //    var str = "";
+    //    for (var i = 0; i < dataAry.length; i++) {
+    //        var cur = dataAry[i];
+    //        str += "<li>";
+    //        str += "<img src='img/default.jpg' trueImg='" + cur.logo + "'>";
+    //        str += "<div>";
+    //        str += "<h2>" + cur.title + "</h2>";
+    //        str += "<p>" + cur.desc + "</p>";
+    //        str += "</div>";
+    //        str += "</li>"
+    //    }
+    //    newsList.innerHTML = str;
+    //
+    //
+    //    /*实现图片延迟加载，首先能确定的只有屏幕的宽度*/
+    //    var winH = document.documentElement.clientHeight || document.body.clientHeight;
+    //    function a() {
+    //        for (var i = 0; i < imgList.length; i++) {
+    //            ~function (i) {
+    //                b(i);
+    //            }(i);
+    //        }
+    //    }
+    //
+    //    function b(i) {
+    //        var curImg = imgList[i]; // 获取每一张图片
+    //        if (!curImg.isLoad) {
+    //            var curImgT = offset(curImg).top + curImg.offsetHeight;// 图片距离body的高度，加上图片自身的高度。
+    //            var winT = (document.documentElement.scrollTop || document.body.scrollTop )+ winH;//浏览器卷上去的高度加上自身屏幕的高度
+    //            if (winT >= curImgT) {
+    //                var trueImg = curImg.getAttribute("trueImg");//获取在每张图片上存放的trueImg图片地址
+    //                    var oImg = new Image;//创建一个新的图片，通过这个图片来进行判断，传入的trueImg图片地址是否正确。
+    //                    oImg.src = trueImg;
+    //                    oImg.onload = function () {
+    //                    curImg.src = trueImg;
+    //                    oImg = null;
+    //                };
+    //                curImg.isLoad = true;
+    //            }
+    //        }
+    //    }
+    //
+    //    window.onscroll=a;
+    //    window.onscroll();
+
+    /*写一个方法，获取指定元素到达body之间的距离 保证兼容性*/
+
+    function offset(ele) {
+        var l = ele.offsetLeft;
+        var t = ele.offsetTop;
+        var p = ele.offsetParent;
+        while (p.tagName.toLocaleLowerCase() !== "body") {
+            if (navigator.userAgent.indexOf("MSIE 8") === -1) {
+                l += p.clientLeft;
+                t += p.clientTop;
+            }
+
+            l += p.offsetLeft;
+            t += p.offsetTop;
+            p = p.offsetParent;
+        }
+        return {left: l, top: t};
+    }
+
+    /*进行数据绑定 利用字符串拼接的方法 */
+
+    var newList = document.getElementById("newsList");
+    var str = "";
+    for (var i = 0; i < dataAry.length; i++) {
+        var cur = dataAry[i];
+        str += "<li>";
+        str += "<img src='img/default.jpg' trueImg='" + cur.logo + "'>";
+        str += "<div>";
+        str += "<h2>" + cur.title + "</h2>";
+        str += "<p>" + cur.desc + "</p>";
+        str += "</div>";
+        str += "</li>"
+    }
+    newList.innerHTML = str;
+
+    /*进行滚动页面与图片高度的比较， 若是页面的滚动高于图片的高度，则可以加载真是图片*/
+    var imgList = newList.getElementsByTagName("img");
+    function a() {
+        for (var i = 0; i < imgList.length; i++) {
+            ~function (i) {
+                b(i);
+            }(i)
+        }
+    }
+
+    function b(i) {
+        var winH = document.documentElement.clientHeight || document.body.clientHeight;
+        var winT = (document.documentElement.scrollTop || document.body.scrollTop) + winH;
+        var curImg = imgList[i];
+        if (curImg.isLoad) {
+            return
+        }
+
+        var curImgT = offset(curImg).top + curImg.offsetHeight;
+        if (winT >= curImgT) {
+            var trueImg = curImg.getAttribute("trueImg");
+            var oImg = new Image;
+            oImg.src = trueImg;
+            oImg.onload = function () {
+                curImg.src = trueImg;
+                oImg = null;
+                curImg.isload = true;
+            }
+        }
+    }
+
+    window.onscroll = a;
+    window.onscroll();
+
+
+</script>
+</body>
+</html>

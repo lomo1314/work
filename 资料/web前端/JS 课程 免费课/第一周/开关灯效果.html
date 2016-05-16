@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body,html {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,body{
+            width: 100%;
+            height: 100%;
+
+        }
+
+
+
+        #div1{
+            width: 50%;
+            height: 50%;
+            border: 1px solid #008000;
+            cursor:pointer;
+            margin: 10px auto;
+          }
+    </style>
+</head>
+<body>
+    <!--
+    开关灯，默认是开灯状态，当我点击关灯的时候，我让整个屏幕变黑。当我点击开灯的时候，让整个屏幕变亮
+    -->
+<div id="div1" style="background: white">
+
+</div>
+
+    <script type="text/javascript">
+        var oDiv=document.getElementById("div1");
+        oDiv.onclick=function(){
+            var bg=oDiv.style.backgroundColor;
+            switch (bg){
+                case "white" :oDiv.style.backgroundColor="black";
+                        break;
+                case "black" :oDiv.style.backgroundColor="yellow";
+                    break;
+                default :oDiv.style.backgroundColor="white";
+
+            }
+
+
+
+
+
+
+
+
+//            var bg=oDiv.style.backgroundColor;
+//             if(bg=="white"){
+//                 oDiv.style.backgroundColor="black";}
+//            else if(bg=="black"){
+//                oDiv.style.backgroundColor="yellow";
+//            }
+//             else if(bg=="yellow"){
+//                 oDiv.style.backgroundColor="blue";
+//             }
+//             else if(bg=="blue"){
+//                 oDiv.style.backgroundColor="red";
+//             }
+//                 else{
+//                     oDiv.style.backgroundColor="white";
+//
+//             }
+
+        }
+    </script>
+</body>
+</html>

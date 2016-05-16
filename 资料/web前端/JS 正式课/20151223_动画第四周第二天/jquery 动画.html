@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #btnMenu {
+            width: 100px;
+            height: 30px;
+            border: 1px solid #CCCCCC;
+            cursor: pointer;
+            display: block;
+            margin: 20px;
+        }
+
+        .box {
+            position: absolute;
+            top: 60px;
+            left: 0;
+
+            background: aquamarine;
+            width: 200px;
+            height: 200px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="btnMenu" value="按钮"/>
+
+<div class="box"></div>
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script>
+    //    $("#btnMenu").click(function(){ //隐藏
+    //        $(".box").hide("fast");
+    //    })
+
+    //    $("#btnMenu").click(function(){ // 显示
+    //        $(".box").show(500);
+    //    })
+
+
+//    $("#btnMenu").click(function () {  // 显示隐藏切换
+//        $(".box").toggle(500);
+//    })
+
+//    $("#btnMenu").click(function () {  //
+//        $(".box").slideDown(500);
+//    })
+        var tar=(document.documentElement.clientWidth||document.body.clientWidth)-100;
+        $("#btnMenu").click(function () {  // 淡入淡出
+           $(".box").fadeIn(500).animate(
+                   {left:tar,height:100,width:100
+                   },1000,"linear",function(){
+               $(this).fadeOut(500)
+           });
+        });
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+//    var ary=[1,2,3,1,2,3,4,1,2,3,4,3,5,6,7,4,6,5,7,8];
+//    var obj={};
+//    for (var i=0;i<ary.length;i++){
+//        var cur=ary[i];
+//        if(obj[cur]==cur){
+//            ary.splice(i,1);  /* 后面所有项都需要从新计算。。 耗性能*/
+//            i--;
+//    数组塌陷，使用splice删除当前项，后面每一项的索引都会往前提一位，我们删除后，如果在i++ 这样的话，会空开一位，比较不了。
+//    i--;
+//            continue;
+//        }
+//        obj[cur]=cur;
+//    }
+//
+//    obj=null;
+//    console.log(ary);
+
+
+
+//     优化后
+
+
+//     splice 删除当前项后，后面的每一项的索引都会重新计算，如果后面有一百万项，是非常消耗性能的。
+//    不适用splice 但是也可以把当前项删除掉。
+//    只把最后一项替换当前项 然后再把最后一项删除。
+//    ary[ary.length-1] 是最后一项的索引，
+//    ary.length-- ;就是删除最后一项！
+
+/*    var ary=[1,2,3,1,2,3,4,1,2,3,4,3,5,6,7,4,6,5,7,8];
+    var obj={};
+    for (var i=0;i<ary.length;i++){
+        var cur=ary[i];
+        if(obj[cur]==cur){
+            ary[i]=ary[ary.length-1];
+              ary.length--;
+              i--;
+
+            continue;
+        }
+        obj[cur]=cur;
+    }*/
+
+var ary=[1,1,2,3,4,2];
+function arr(ary){
+    var obj={};
+    var ar=[];
+    for(var i=0;i<ary.length;i++){
+        var cur=ary[i];
+        if(obj[cur]>=1){
+            obj[cur]++;
+            continue;
+        }
+        obj[cur]=1;
+    }
+    for(var key in obj){
+        if(obj.hasOwnProperty(key)){
+            if(obj[key]===1){
+                ar.push(eval(key));
+            }
+        }
+    }
+    obj=null;
+    return ar;
+}
+console.log(arr(ary));
+
+</script>
+</body>
+</html>

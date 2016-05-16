@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        div,ul,li{
+            list-style: none;
+        }
+
+        .c1{
+            background: pink;
+        }
+        .c2{
+            background: yellow;
+        }
+        .c3{
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+<ul id="tab"></ul>
+<script type="text/javascript">
+    var lis = document.getElementById("tab");
+
+    for (var i = 1; i<= 9; i++) {
+        var oLis = document.createElement("li");
+        switch(i%3){
+            case 0:oLis.className="c1";break;
+            case 1:oLis.className="c2";break;
+            default:oLis.className="c3";
+        }
+        for (var j = 1; j <= i; j++) {
+            oLis.innerHTML += j + "*" + i + "=" + j * i + "&nbsp;&nbsp;";
+        }
+        lis.appendChild(oLis);
+    }
+
+</script>
+
+</body>
+</html>

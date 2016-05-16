@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+  var ary=[1,34,44,32,12,13,14,17,21,22,34,33,43];
+    sortAry(ary);
+    console.log(ary);
+    function sortAry (ary,type){
+    for( var i=0;i<ary.length-1;i++){
+        for( var j=0;j<ary.length-1-i;j++){
+            if(ary[j]>ary[j+1]){
+                var tmp=ary[j];
+                ary[j]=ary[j+1];
+                ary[j+1]=tmp;
+            }
+        }
+
+    }
+        type===1?ary.reverse():void 0;
+    }
+</script>
+</body>
+</html>

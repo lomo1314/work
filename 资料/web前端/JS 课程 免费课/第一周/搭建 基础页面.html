@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- 内嵌式 编写样式-->
+    <style type="text/css">
+        /*<!-- 初始化 常用标签样式--> 因为这些标签在不同的浏览器中又自己的样式，为了统一操作 都从新设置统一个值*/
+        body,div ,img,input{
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        img{
+            border: none;
+        }
+        input{
+            outline: none;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .box{
+            width: 100%;
+            height: 100%;
+            background: url("") no-repeat;
+            background-size: 100%;  /*css 新样式， 当前区域有多大， 图片背景有多大。*/
+        }
+
+        /*让指定宽高的元素在屏幕之间位置*/
+        .inner{
+            width: 640px;
+            height: 220px;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            margin: -110px 0 0 -320px;
+
+        }
+
+
+
+
+    </style>
+</head>
+<!--如何给html 页面增加css样式
+1，行内样式 ： 直接在html 标签上增加style="样式在这里"  应用于单独给某一个元素增加样式，（一般在写css样式时候 都不用。）
+2，内嵌式   ： 在head 中增加style 标签，吧需要给元素设置的样式都写在style里面。
+3，外链式   ： 为了让hrml中的 标签和我们的样式分离开，我们把样式写在外部的文件中。，然后在通过link 引入近来。
+4，导入式   :和外链是相同都是把样式文件写在外面，然后通过@import 导入、
+-->
+
+<body>
+    <div class="box">
+        <div class="inner">
+        <img src="" alt=""/>
+        <input type="text" id="search"/>
+        <input type="button"  id="submit" value="百度一下"/>
+        </div>
+    </div>
+<!--和css 一样，如何把js引入页面当中
+1，行内js  （不推荐，不安全）
+2.内嵌js
+3，外外链js
+
+-->
+    <!--  内嵌式引入js-->
+    <script type="text/javascript">
+        【1】 alert("欢迎大家 我们要输出的内容");  /*在浏览器中弹出一个对话框。然后把要输出的内容展示出来。*/
+//         alret 都是把要输出的内容首先转化成字符串然后在输出的。
+        【2】document.write("我们要输出的内容")/* 直接在页面中展示我们输出的内容。*/
+
+        console.log("输出内容")/* 在控制台输出。。。f12 。如何查看控制台。那谷歌浏览器来说，控制台包含了，很多项：
+        1，elements 展示了页面中的html 结构。但是最主要的功能就是随时调试css 样式（等价于  fire bug）
+        2.console 我们在控制台输出的内容都可以在这里查看，还可以在这里编写js代码进行验证
+        3.sources  网站中的css js html 文件都可以在这里下载查看。可以通过这个扒别人的源码。
+        4， network 展示了页面所有的加载资源。 css js  img Ajax   JSNOP 并且每一个资源文件加载的世间都能看到，通过这个我们
+        可以进行页面的性能优化。*/
+
+        【3】console.dir("输出的内容")/*这种方式 比.log 输出的内容更加详细。*/
+
+        console.table("")
+
+        【4】value /*给表单元素赋值内容，获取表单元素*/
+
+//        页面中的元素都可以增加一个元素，id 都是唯一的。html中的id 理论上也是唯一的。id 就代表了 具体的某一个元素。
+//        通过元素的id  来获取这个元素，
+
+//        document : 文档  限定了我们在整个文档中获取，我们把document称之为上下文（context）/*上下文：上文和下文。整个执行的环境
+//                        在这里是限定获取的范围。*/
+//         get： 获取
+//         Element ： 一个元素
+//        By ： 通过
+//         Id ： 元素的id
+        document.getElementById("search").value="给文本框添加的内容。"
+
+       【5】 innerHTML/innerText
+//        给除了表单元素的标复制。，
+//       innerHTML/innerText 的区别
+//         innerHTML在赋值的 时候，如果遇到了有效的html标签会把他当做真正的标签来处理。可以起到标签原本的作用。
+//        innerText 不管是不是标签，都当做文本来赋值。标签起不到自己的作用，
+//        总结：在赋值的时候，innerHTML 可以识别html 标签，而 innerText不识别
+
+//           在火狐浏览器中，不支持innerText。而innerHtml 是所有浏览器都支持的。
+
+    </script>
+
+
+<!--外链式引入js -->
+
+    <script type="text/javascript" src="js/text.js">
+        <!-- 如果使用的是外链式引入js 在当前的script中编写的热河代码都是没有效果的-->
+
+    </script>
+
+
+</body>
+</html>

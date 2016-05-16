@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        div{
+            width: 500px;
+            height: 400px;
+            border: 1px solid #CCCCCC;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1" style="background-color: white"></div>
+
+    <script type="text/javascript">
+        var oDiv=document.getElementById("div1");
+        oDiv.onclick=function(){
+//            var bg=oDiv.style.backgroundColor;
+//            if(bg=="white" ){
+//                oDiv.style.backgroundColor="black";
+//            }
+//            else if(bg=="black"){
+//                oDiv.style.backgroundColor="white"
+//            }
+
+
+            var bg=oDiv.style.backgroundColor;
+                switch (bg){
+                    case "white" : oDiv.style.backgroundColor="black";
+                        break;
+                    case  "black" : oDiv.style.backgroundColor="yellow";
+                        break;
+                    case  "yellow": oDiv.style.backgroundColor="green";
+                        break;
+
+                    default :oDiv.style.backgroundColor="white";
+                }
+
+        }
+
+
+
+    </script>
+</body>
+</html>

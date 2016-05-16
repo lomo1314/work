@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function getCss(ele,attr){
+        if(window.getComputedStyle(ele,attr)){
+            return parseFloat(getComputedStyle(ele,null)[attr]);
+        }
+        function animate(){
+            var begin=getCss(ele,attr);
+            var change=target-begin;
+            var times=0;
+            var interval=15;
+
+            function step(){
+                times=interval;
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body, div,ul,li{
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+
+        #tab {
+            width: 500px;
+            margin: 0 auto;
+
+        }
+
+        #tab ul{
+            overflow: hidden;
+            zoom: 1;
+            list-style: none;
+            top: 1px;
+            position: relative;
+
+        }
+        #tab ul li{
+            float: left;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #CCCCCC;
+            margin-right: 10px;
+            text-align: center;
+            cursor: pointer;
+
+        }
+        #tab ul .past{
+            background: chartreuse;
+            border-bottom-color: chartreuse;
+
+        }
+
+
+        #tab div{
+            display: none;
+            width: 500px;
+            height: 100px;
+            line-height: 100px;
+            border: 1px solid #CCCCCC;
+            text-align: center;
+            background: #ffff01;
+        }
+
+        #tab  .past{
+            display: block;
+
+        }
+
+    </style>
+</head>
+<body>
+<div id="tab">
+    <ul>
+        <li class="past">电视剧</li>
+        <li>电影</li>
+        <li>动漫</li>
+    </ul>
+    <div class="past">最新电视剧</div>
+    <div>电影频道</div>
+    <div>动漫世界</div>
+</div>
+
+<script type="text/javascript">
+   var oTab=document.getElementById("tab");
+    var oLis=oTab.getElementsByTagName("li");
+    var oDiv=oTab.getElementsByTagName("div");
+
+
+    function tabChange (nIndex){
+        for ( var i=0;i<oLis.length;i++){
+            oLis[i].className=null;
+            oDiv[i].className=null;
+        }
+
+        oLis[nIndex].className="past";
+        oDiv[nIndex].className="past";
+    }
+
+
+    for(var i= 0;i<oLis.length;i++){
+        oLis[i].cat=i;
+        oLis[i].onclick=function(){
+            tabChange(this.cat)
+        }
+    }
+
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,775 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="gbk">
+    <title>手机中国——专业、有态度的手机门户</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" href="css/index.css"/>
+</head>
+<script type="text/javascript">
+    (function (doc, win) {
+        var uAgent = win.navigator.userAgent;
+        var isIOS = uAgent.match(/iphone/i);
+        var isYIXIN = uAgent.match(/yixin/i);
+        var is2345 = uAgent.match(/Mb2345/i);
+        var ishaosou = uAgent.match(/mso_app/i);
+        var isLiebao = uAgent.match(/liebaofast/i);
+        var isGnbr = uAgent.match(/GNBR/i);
+        var docEle = doc.documentElement;
+        var dpr = 1;
+
+        function resizeRoot() {
+            var wWidth = (screen.width > 0) ? (window.innerWidth >= screen.width || window.innerWidth == 0) ? screen.width : window.innerWidth : window.innerWidth, wDpr, wFsize;
+            var wHeight = (screen.height > 0) ? (window.innerHeight >= screen.height || window.innerHeight == 0) ? screen.height : window.innerHeight : window.innerHeight;
+            if (window.devicePixelRatio) {
+                wDpr = window.devicePixelRatio
+            } else {
+                wDpr = isIOS ? wWidth > 818 ? 3 : wWidth > 480 ? 2 : 1 : 1
+            }
+            if (isIOS) {
+                wWidth = screen.width;
+                wHeight = screen.height
+            }
+            if (wWidth > wHeight) {
+                wWidth = wHeight
+            }
+            wFsize = wWidth > 768 ? 48 : 40 * (wWidth / 640);
+            window.screenWidth_ = wWidth;
+            if (isYIXIN || is2345 || ishaosou || isLiebao || isGnbr) {
+                setTimeout(function () {
+                    wWidth = (screen.width > 0) ? (window.innerWidth >= screen.width || window.innerWidth == 0) ? screen.width : window.innerWidth : window.innerWidth;
+                    wHeight = (screen.height > 0) ? (window.innerHeight >= screen.height || window.innerHeight == 0) ? screen.height : window.innerHeight : window.innerHeight;
+                    wFsize = wWidth > 768 ? 48 : 40 * (wWidth / 640);
+                    docEle.dataset.dpr = wDpr;
+                    docEle.style.fontSize = wFsize + "px"
+                }, 500)
+            } else {
+                docEle.dataset.dpr = wDpr;
+                docEle.style.fontSize = wFsize + "px"
+            }
+        }
+
+        resizeRoot()
+    })(document, window);
+</script>
+<body>
+<!--头部-->
+<header class="m_template m_holiday" id="m_template" style="background-image: url(images/holiday_nav.png);">
+    <div class="m_nav" id="m_nav">
+        <div class="m_holiday_a" style="color: #d81817;"></div>
+        <a href="###" class="sub1"><img src="images/icon_logo1.png"></a>
+
+        <div class="sub2 r">
+            <a class="col1" href="http://my.m.cnmo.com/" title="登录"
+               style="background-image: url(images/holiday_nav2.png);">登录</a>
+        </div>
+    </div>
+</header>
+<div class="m_top_div m_holiday1"></div>
+<!--头部结束-->
+<section class="mod_focus"><!--焦点图-->
+    <div class="row1" id="f1_1">
+        <ul>
+            <li>
+                <a href="###"><img src="images/banner.jpg"><em>一根可以减少抽111111111</em></a>
+            </li>
+            <li>
+                <a href="###"><img src="images/banner1.jpg"><em>焦点图二的标题2222222</em></a>
+            </li>
+            <li>
+                <a href="###"><img src="images/banner.jpg"><em>焦点图三的标题啊啊啊啊啊</em></a>
+            </li>
+            <li>
+                <a href="###"><img src="images/banner1.jpg"><em>焦点图二的标题2222222</em></a>
+            </li>
+        </ul>
+    </div>
+    <div class="row2" id="f1_2"></div>
+</section>
+<!--焦点图结束-->
+<section><!--导航块儿-->
+    <ul class="m_nav_b">
+        <li class="bd_left_no">
+            <a href="http://m.cnmo.com/news/"><img width="52px" height="52px"
+                                                   src="images/icon_nav1-1.png"/><span>看资讯</span></a>
+        </li>
+        <li>
+            <a href="http://m.cnmo.com/product/mobile/all/product.html"><img width="52px" height="52px"
+                                                                             src="images/icon_nav2_1.png"/><span>查报价</span></a>
+        </li>
+        <li id="ios_none">
+            <a href="http://m.cnmo.com/app/iphone/"><img width="52px" height="52px" src="images/icon_nav3_1.png"/><span>找应用</span></a>
+        </li>
+        <li class="bd_left_no">
+            <a href="###"><img width="52px" height="52px" src="images/icon_nav4_1.png"/><span>玩智能</span></a>
+        </li>
+        <li>
+            <a href="http://m.cnmo.com/tu/c1.html"><img width="52px" height="52px" src="images/icon_nav5_1.png"/><span>赏美图</span></a>
+        </li>
+        <li>
+            <a href="http://m.cnmo.com/bbs/"><img width="52px" height="52px"
+                                                  src="images/icon_nav6_1.png"/><span>逛论坛</span></a>
+        </li>
+        <div class="c"></div>
+    </ul>
+</section>
+<!--导航块儿结束-->
+<!--广告-->
+<section class="m_ad">
+    <a href="###"><img src="images/add2.jpg"/></a>
+</section>
+<section class="m_ad m_ad1">
+    <a href="###"><img src="images/add3.jpg"/></a>
+    <a href="###" class="m_ad_r"><img src="images/add3.jpg"/></a>
+</section>
+<!--广告end-->
+<!--今日头条-->
+<section class="bor mt10 bfff isTop">
+    <div class="isTopList">
+        <div class="m_list_tit">
+            <div class="m_list_name m_list_lh"><a href="###"><img src="images/icon_tit1.png"/><span>今日头条</span></a>
+            </div>
+            <div class="m_list_a r">
+                <div id="m_hot" class="m_list_hot">
+                    <ul>
+                        <li><a href="http://m.cnmo.com/survey/">1艺范手机让你抓住机让你抓住</a></li>
+                        <li><a href="http://m.cnmo.com/survey/">2艺范手机让你抓住</a></li>
+                        <li><a href="http://m.cnmo.com/survey/">3艺范手机让你抓住</a></li>
+                        <li><a href="http://m.cnmo.com/survey/">4艺范手机让你抓住文艺范</a></li>
+                        <li><a href="http://m.cnmo.com/survey/">5艺范手机让你抓住</a></li>
+                    </ul>
+                </div>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <div class="m_list">
+        <div class="m_list_first">
+            <a class="m_list_first_tit" href="###">
+                <p>华为P9渲染图再曝光颜值翻了</p>
+                <span>其实从整个P9的外观设计上可以可以以以以以</span>
+                <em>3分钟前</em>
+            </a>
+
+            <div class="m_list_first_box"></div>
+            <div class="m_list_first_box1"></div>
+            <div class="m_list_first_shaw"></div>
+            <div id="force_shak">
+                <img src="images/icon_bg.jpg"/>
+            </div>
+        </div>
+        <a href="###" class="m_list_con">
+            <div class="m_list_img"><img width="80px" height="60px" src="images/data_img.png"
+                                         data-src="images/icon_img1.jpg"></div>
+            <div class="m_list_con_tit">
+                <p>华为P9渲染图再曝光：颜值翻</p>
+
+                <div class="m_list_con_tit1"><span>其实从整个P9的外观设计上可以可以以以以以</span><em>3分钟前</em></div>
+            </div>
+        </a>
+        <a href="###" class="m_list_con">
+            <div class="m_list_img"><img width="80px" height="60px" src="images/data_img.png"
+                                         data-src="images/icon_img3.jpg"></div>
+            <div class="m_list_con_tit">
+                <p>华为P9渲染图再曝光：颜值翻</p>
+
+                <div class="m_list_con_tit1"><span>其实从整个P9的外观设计上可以可以以以以以</span><em>3分钟前</em></div>
+            </div>
+        </a>
+        <a href="###" class="m_list_spe">
+            <div class="m_list_spe_tit">
+                <div class="m_list_name"><img src="images/icon_tit2.png"/><span>图赏图赏图赏图赏</span></div>
+                <em>3分钟前</em>
+            </div>
+            <ul class="m_list_spe1">
+                <li><img src="images/data_img.png" data-src="images/icon_img2.jpg" width="160px" height="120px"></li>
+                <li><img src="images/data_img.png" data-src="images/icon_img4.jpg" width="160px" height="120px"></li>
+                <li><img src="images/data_img.png" data-src="images/icon_img6.jpg" width="160px" height="120px"></li>
+                <div class="c"></div>
+            </ul>
+        </a>
+        <a href="###" class="m_list_con m_list_born">
+            <div class="m_list_img"><img width="80px" height="60px" src="images/data_img.png"
+                                         data-src="images/icon_img7.jpg"></div>
+            <div class="m_list_con_tit">
+                <p>华为P9渲染图再曝光：颜值翻</p>
+
+                <div class="m_list_con_tit1"><span>其实从整个P9的外观设计上可以可以以以以以</span><em>3分钟前</em></div>
+            </div>
+        </a>
+        <a href="###" class="m_list_con">
+            <div class="m_list_img"><img width="80px" height="60px" src="images/data_img.png"
+                                         data-src="images/icon_img8.jpg"></div>
+            <div class="m_list_con_tit">
+                <p>华为P9渲染图再曝光：颜值翻</p>
+
+                <div class="m_list_con_tit1"><span>其实从整个P9的外观设计上可以可以以以以以</span><em>2016-03-06</em></div>
+            </div>
+        </a>
+        <a href="###" class="m_list_btn">点击加载更多<span></span></a>
+    </div>
+</section>
+<!--今日头条end-->
+
+<section class="mt10 bor bfff"><!--手机品牌-->
+    <div class="m_phone">
+        <div class="m_phone_list" id="m_phone_list">
+            <ul>
+                <li>
+                    <a href="###">苹果</a><a href="###">三星</a><a href="###">联想</a><a href="###">iPhone</a><a
+                        href="###">中兴</a>
+                    <a href="###">金立</a><a href="###">魅族</a><a href="###">华为</a><a href="###">荣耀</a><a
+                        href="###">vivo</a>
+                    <a href="###">OPPO</a><a href="###">乐视</a><a href="###">360手机</a><a href="###">小米</a><a class="c999"
+                                                                                                            href="http://m.cnmo.com/product/mobile/all/product.html">更多</a>
+                </li>
+                <li>
+                    <a href="###">酷派</a><a href="###">锤子</a><a href="###">TCL</a><a href="###">三星</a><a
+                        href="###">蓝魔</a>
+                    <a href="###">小辣椒</a><a href="###">Gigaset</a><a href="###">摩托罗拉</a><a href="###">ZUK</a><a
+                        href="###">酷比</a>
+                    <a href="###">青葱</a><a href="###">iuni</a><a href="###">邦华</a><a href="###">诺基亚</a><a class="c999"
+                                                                                                          href="http://m.cnmo.com/product/mobile/all/product.html">更多</a>
+                </li>
+            </ul>
+        </div>
+        <div class="m_phone_row" id="m_phone_row"></div>
+    </div>
+</section>
+<!--手机品牌end-->
+<!--广告-->
+<section class="m_ad m_adText">
+    <div id="m_adText" class="m_adText1">
+        <ul>
+            <li><a href="http://m.cnmo.com/survey/">13华为P9渲染图再曝光：颜值翻</a></li>
+            <li><a href="http://m.cnmo.com/survey/">2360奇酷月14日召开的新品发布会造势</a></li>
+            <li><a href="http://m.cnmo.com/survey/">3360奇酷月14日召开的新品</a></li>
+            <li><a href="http://m.cnmo.com/survey/">4360奇酷月14日召开的新品发布会造势跌足</a></li>
+            <li><a href="http://m.cnmo.com/survey/">5360奇酷月14日召开的新品</a></li>
+        </ul>
+    </div>
+</section>
+<!--广告end-->
+<!--广告轮播-->
+<section class="m_ad_car mt10 bor">
+    <div id="m_ad_car">
+        <ul>
+            <li class="ad_con">
+                <a href="###">
+                    <div class="ad_con_l">
+                        <img class="m_ad_img1" src="images/icon_img10.jpg"/>
+                    </div>
+                    <div class="ad_con_r">
+                        <p>360奇酷手机旗舰版(全网通)</p>
+                        <span>360奇酷手机最近放出多张海报为1月14日召开的新品</span>
+                    </div>
+                </a>
+            </li>
+            <li class="ad_con1">
+                <a href="###">
+                    <div class="ad_con_r">
+                        <p><img class="m_ad_img" src="images/icon_img9.jpg"/>60奇酷月14日召开的新品发布会造势跌足</p>
+                    </div>
+                </a>
+
+                <div class="cur_cur1"></div>
+                <a href="###">
+                    <div class="ad_con_r">
+                        <p><img class="m_ad_img" src="images/icon_img14.jpg"/>魅族PRO 6星空黑正面照曝光</p>
+                    </div>
+                </a>
+            </li>
+            <li class="ad_con2">
+                <a href="###">
+                    <div class="ad_con_l"><img
+                            src="http://imgm7.cnmo-img.com.cn/appimg/headpic/114x114/247/246947.jpg"/></div>
+                    <div class="ad_con_r"><p>航海王强者之路</p><span>32.58MB</span></div>
+                </a>
+                <a href="###">
+                    <div class="ad_con_l"><img
+                            src="http://imgm4.cnmo-img.com.cn/appimg/headpic/114x114/224/223324.jpg"/></div>
+                    <div class="ad_con_r"><p>腾讯视频</p><span>38.19MB</span></div>
+                </a>
+
+            </li>
+
+        </ul>
+    </div>
+    <div class="m_phone_row m_phone_row1" id="m_ad_btn"></div>
+</section>
+<!--广告轮播end-->
+<section class="bor mt10 bfff isTop"><!--热门资讯-->
+    <div class="isTopList">
+        <div class="m_list_tit">
+            <div class="m_list_name m_list_lh"><a href="###"><img src="images/icon_tit3.png"/><span>热门资讯</span></a>
+            </div>
+            <div class="m_list_a r">
+                <a>小道消息</a><a class="cut_cut" href="javascript:;">|</a><a>机情问答</a>
+            </div>
+        </div>
+    </div>
+    <div class="m_list bfff">
+
+        <a href="###" class="m_list_con">
+            <div class="m_list_img"><img width="80px" height="60px" src="images/data_img.png"
+                                         data-src="images/icon_img9.jpg"></div>
+            <div class="m_list_con_titan">
+                <p>华为P9渲染图再曝光：颜值翻</p>
+
+                <div class="m_list_con_tit1"><em>3分钟前</em><span>最新</span></div>
+            </div>
+        </a>
+        <a href="###" class="m_list_con">
+            <div class="m_list_img"><img width="80px" height="60px" src="images/data_img.png"
+                                         data-src="images/icon_img10.jpg"></div>
+            <div class="m_list_con_titan">
+                <p>华为P9渲染图再曝光：颜值翻</p>
+
+                <div class="m_list_con_tit1"><em>3分钟前</em></div>
+            </div>
+        </a>
+        <a href="###" class="m_list_spe">
+            <div class="m_list_spe_tit">
+                <div class="m_list_name"><span>拒绝跑马车 超窄边框美型机 </span></div>
+                <em>3分钟前</em>
+            </div>
+            <ul class="m_list_spe1">
+                <li><img src="images/data_img.png" data-src="images/icon_img21.jpg"></li>
+                <li><img src="images/data_img.png" data-src="images/icon_img22.jpg"></li>
+                <li><img src="images/data_img.png" data-src="images/icon_img23.jpg"></li>
+                <div class="c"></div>
+            </ul>
+        </a>
+        <a href="###" class="m_list_con m_list_born">
+            <div class="m_list_img"><img width="80px" height="60px" src="images/data_img.png"
+                                         data-src="images/icon_img14.jpg"></div>
+            <div class="m_list_con_titan">
+                <p>华为P9渲染图再曝光：颜值翻</p>
+
+                <div class="m_list_con_tit1"><em>3分钟前</em><span>独家</span></div>
+            </div>
+        </a>
+        <a href="###" class="m_list_spe">
+            <div class="m_list_spe_tit">
+                <div class="m_list_name"><span>拒绝跑马车 超窄边框美型机 </span></div>
+                <em>3分钟前</em>
+            </div>
+            <ul class="m_list_spe1">
+                <li><img src="images/data_img.png" data-src="images/icon_img15.jpg"></li>
+                <li><img src="images/data_img.png" data-src="images/icon_img16.jpg"></li>
+                <li><img src="images/data_img.png" data-src="images/icon_img17.jpg"></li>
+                <div class="c"></div>
+            </ul>
+        </a>
+        <a href="###" class="m_list_con">
+            <div class="m_list_img"><img width="80px" height="60px" src="images/data_img.png"
+                                         data-src="images/icon_img18.jpg"></div>
+            <div class="m_list_con_titan">
+                <p>华为P9渲染图再曝光：颜值翻</p>
+
+                <div class="m_list_con_tit1"><em>3分钟前</em><span>最新</span></div>
+            </div>
+        </a>
+        <a href="###" class="m_list_con">
+            <div class="m_list_img"><img width="80px" height="60px" src="images/data_img.png"
+                                         data-src="images/icon_img19.jpg"></div>
+            <div class="m_list_con_titan">
+                <p>华为P9渲染图再曝光：颜值翻</p>
+
+                <div class="m_list_con_tit1"><em>3分钟前</em><span>最新</span></div>
+            </div>
+        </a>
+        <a href="###" class="m_list_con">
+            <div class="m_list_img"><img width="80px" height="60px" src="images/data_img.png"
+                                         data-src="images/icon_img20.jpg"></div>
+            <div class="m_list_con_titan">
+                <p>华为P9渲染图再曝光：颜值翻</p>
+
+                <div class="m_list_con_tit1"><em>3分钟前</em><span>最新</span></div>
+            </div>
+        </a>
+        <a href="###" class="m_list_btn"><em>点击加载更多</em><span></span></a>
+    </div>
+</section>
+<!--热门资讯end-->
+<section class="mt10 bfff bor"><!--315投诉-->
+    <div class="m_list315">
+        <div class="m_list315_tit"><a href="http://m.cnmo.com/survey/"><span>投诉</span>
+
+            <p>手机质量投诉，我只说真话</p></a></div>
+        <div id="m_list315" class="m_list315_con">
+            <ul>
+                <li><a href="http://m.cnmo.com/survey/"><span>07:26</span><span>188****7251</span><span
+                        class="m_list315_qus">11111</span></a></li>
+                <li><a href="http://m.cnmo.com/survey/"><span>02:26</span><span>139****7915</span><span
+                        class="m_list315_qus">2222</span></a></li>
+                <li><a href="http://m.cnmo.com/survey/"><span>01:07</span><span>133****4868</span><span
+                        class="m_list315_qus">333333333</span></a></li>
+                <li><a href="http://m.cnmo.com/survey/"><span>01:07</span><span>133****4868</span><span
+                        class="m_list315_qus">444444</span></a></li>
+                <li><a href="http://m.cnmo.com/survey/"><span>01:07</span><span>133****4868</span><span
+                        class="m_list315_qus">5555</span></a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--315投诉end-->
+
+<section class="bor mt10 bfff isTop"><!--智能硬件-->
+    <div class="isTopList">
+        <div class="m_list_tit">
+            <div class="m_list_name m_list_lh"><a href="###"><img src="images/icon_tit4.png"/><span>智能硬件</span></a>
+            </div>
+            <div class="m_list_a m_list_in r">
+                <button type="button" class="list_in_more m_list_lh">
+                    <p>换一批</p>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="m_list">
+        <a href="###" class="m_list_spe2">
+            <span class="m_list_spe2_tit">华为P9渲染图再曝光：颜值翻</span>
+            <ul class="m_list_spe1">
+                <li><img width="194px" height="130px" src="images/data_img.png" data-src="images/icon_img11.jpg"></li>
+                <li><img width="194px" height="130px" src="images/data_img.png" data-src="images/icon_img12.jpg"></li>
+                <li><img width="194px" height="130px" src="images/data_img.png" data-src="images/icon_img13.jpg"></li>
+                <div class="c"></div>
+            </ul>
+            <div class="m_list_con_tit2 m_list_con_tit3">
+                <div class="m_list_spe2_reply"><span></span><em>1万</em></div>
+                <em>3分钟前</em>
+            </div>
+        </a>
+        <a href="###" class="m_list_con">
+            <div class="m_list_img"><img width="80px" height="60px" src="images/data_img.png"
+                                         data-src="images/icon_img10.jpg"></div>
+            <div class="m_list_con_titan">
+                <p>华为P9渲染图再曝光：颜值翻</p>
+
+                <div class="m_list_con_tit2">
+                    <em>3分钟前</em>
+
+                    <div class="m_list_spe2_reply"><span></span><em>1万</em></div>
+                </div>
+            </div>
+        </a>
+        <a href="###" class="m_list_con1">
+            <div class="m_list_img"><img width="80px" height="60px" src="images/data_img.png"
+                                         data-src="images/icon_img8.jpg"></div>
+            <div class="m_list_con_titan">
+                <p>华为P9渲染图再曝光：颜值翻</p>
+
+                <div class="m_list_con_tit2">
+                    <em>3分钟前</em>
+
+                    <div class="m_list_spe2_reply"><span></span><em>2500</em></div>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>
+<!--智能硬件end-->
+<section class="bor mt10 bfff isTop"><!--视频漫画-->
+    <div class="isTopList">
+        <div class="m_list_tit">
+            <div class="m_list_name m_list_lh m_list_name_more">
+                <img src="images/icon_tit5.png"/>
+                <a href="###"><span>视频</span></a>
+
+                <div class="cut_cut">|</div>
+                <a href="###"><span>漫画</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="m_list">
+        <ul class="m_list_video">
+            <li>
+                <a href="###">
+                    <div class="m_list_video_img">
+                        <span>视频</span>
+
+                        <div><img src="images/data_img.png" data-src="images/icon_img5.jpg"></div>
+                    </div>
+                    <div class="m_list_video_inf">
+                        <p>战略合作同道大叔出道</p>
+                        <em>3分钟前</em>
+                    </div>
+                </a>
+                <a href="###">
+                    <div class="m_list_video_img">
+                        <span>视频</span>
+
+                        <div><img src="images/data_img.png" data-src="images/icon_img51.jpg"></div>
+                    </div>
+                    <div class="m_list_video_inf">
+                        <p>战略合作同道大叔出道</p>
+                        <em>3分钟前</em>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="###">
+                    <div class="m_list_video_img">
+                        <span>视频</span>
+
+                        <div><img src="images/data_img.png" data-src="images/icon_img52.jpg"></div>
+                    </div>
+                    <div class="m_list_video_inf">
+                        <p>战略合作同道大叔出道</p>
+                        <em>3分钟前</em>
+                    </div>
+                </a>
+                <a href="###">
+                    <div class="m_list_video_img">
+                        <span>视频</span>
+
+                        <div><img src="images/data_img.png" data-src="images/icon_img54.jpg"></div>
+                    </div>
+                    <div class="m_list_video_inf">
+                        <p>战略合作同道大叔出道</p>
+                        <em>3分钟前</em>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="###">
+                    <div class="m_list_video_img">
+                        <span class="m_list_car">漫画</span>
+
+                        <div><img src="images/data_img.png" data-src="images/icon_img55.jpg"></div>
+                    </div>
+                    <div class="m_list_video_inf">
+                        <p>战略合作同道大叔出道</p>
+                        <em>3分钟前</em>
+                    </div>
+                </a>
+                <a href="###">
+                    <div class="m_list_video_img">
+                        <span class="m_list_car">漫画</span>
+
+                        <div><img src="images/data_img.png" data-src="images/icon_img56.jpg"></div>
+                    </div>
+                    <div class="m_list_video_inf">
+                        <p>战略合作同道大叔出道</p>
+                        <em>3分钟前</em>
+                    </div>
+                </a>
+            </li>
+        </ul>
+
+        <div class="c"></div>
+    </div>
+</section>
+<!--视频漫画end-->
+<section class="bor mt10 bfff isTop"><!--新机速递-->
+    <div class="isTopList">
+        <div class="m_list_tit">
+            <div class="m_list_name m_list_lh">
+                <a href="###"><img src="images/icon_tit6.png"/><span>新机速递</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="m_new_phone bor1">
+        <div id="m_new_phone">
+            <ul>
+                <li>
+                    <a href="###">
+                        <div class="m_new_phone_img"><img src="images/icon_phone.jpg"></div>
+                        <p>苹果iPhone SE新果2016年最新</p>
+                        <span>￥1200</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="###">
+                        <div class="m_new_phone_img"><img src="images/icon_phone1.jpg"></div>
+                        <p>苹果iPhone SE新</p>
+                        <span>￥1200</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="###">
+                        <div class="m_new_phone_img"><img src="images/icon_phone1.jpg"></div>
+                        <p>小米 红米2 增强版白色 移动4G手机</p>
+                        <span>￥1200</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="###">
+                        <div class="m_new_phone_img"><img src="images/icon_phone.jpg"></div>
+                        <p>苹果iPhone SE新果2016年最新</p>
+                        <span>￥1200</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="###">
+                        <div class="m_new_phone_img"><img src="images/icon_phone.jpg"></div>
+                        <p>苹果iPhone SE新果2016年最新</p>
+                        <span>￥1200</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="###">
+                        <div class="m_new_phone_img"><img src="images/icon_phone1.jpg"></div>
+                        <p>苹果iPhone SE新果2016年最新</p>
+                        <span>￥1200</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="###">
+                        <div class="m_new_phone_img"><img src="images/icon_phone.jpg"></div>
+                        <p>苹果iPhone SE新果2016年最新</p>
+                        <span>￥1200</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="###">
+                        <div class="m_new_phone_img"><img src="images/icon_phone.jpg"></div>
+                        <p>苹果iPhone SE新果2016年最新</p>
+                        <span>￥1200</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="###">
+                        <div class="m_new_phone_img"><img src="images/icon_phone.jpg"></div>
+                        <p>苹果iPhone SE新果2016年最新</p>
+                        <span>￥1200</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="###">
+                        <div class="m_new_phone_img"><img src="images/icon_phone1.jpg"></div>
+                        <p>苹果iPhone SE新果2016年最新</p>
+                        <span>￥1200</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--新机速递end-->
+<section id="ios_none1" class="bor mt10 bfff isTop"><!--大家都在玩-->
+    <div class="isTopList">
+        <div class="m_list_tit">
+            <div class="m_list_name m_list_lh">
+                <a href="###"><img src="images/icon_tit7.png"/><span>大家都在玩</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="app-enter">
+        <div class="app-enter-tit">
+            <span>手机应用</span>
+            <a href="http://m.cnmo.com/app/">更多</a>
+        </div>
+        <div class="app-enter-list">
+            <ul>
+                <li>
+                    <a href="http://m.cnmo.com/app/">
+                        <img src="http://imgm6.cnmo-img.com.cn/appimg/headpic/114x114/249/248606.jpg">
+
+                        <p>搜狗输入法</p>
+                        <span>12MB</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://m.cnmo.com/app/">
+                        <img src="http://imgm5.cnmo-img.com.cn/appimg/headpic/114x114/224/223475.jpg">
+
+                        <p>虎扑跑步</p>
+                        <span>12MB</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://m.cnmo.com/app/">
+                        <img src="http://imgm8.cnmo-img.com.cn/appimg/headpic/114x114/247/246518.png">
+
+                        <p>最右</p>
+                        <span>12MB</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://m.cnmo.com/app/">
+                        <img src="http://imgm7.cnmo-img.com.cn/appimg/headpic/114x114/248/247817.jpg">
+
+                        <p>阅读王</p>
+                        <span>12MB</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="app-enter">
+        <div class="app-enter-tit">
+            <span>手机游戏</span>
+            <a href="http://m.cnmo.com/app/">更多</a>
+        </div>
+        <div class="app-enter-list">
+            <ul>
+                <li>
+                    <a href="http://m.cnmo.com/app/">
+                        <img src="images/icon_app.jpg">
+
+                        <p>360手机安全卫士</p>
+                        <span>12MB</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://m.cnmo.com/app/">
+                        <img src="images/icon_app1.jpg">
+
+                        <p>真人街机捕鱼</p>
+                        <span>47.26MB</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://m.cnmo.com/app/">
+                        <img src="http://imgm5.cnmo-img.com.cn/appimg/headpic/114x114/224/223015.jpg">
+
+                        <p>开心消消乐</p>
+                        <span>66.9MB</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://m.cnmo.com/app/">
+                        <img src="http://imgm.cnmo-img.com.cn/appimg/headpic/114x114/248/247080.png">
+
+                        <p>万人水果777</p>
+                        <span>20.4MB</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--大家都在玩end-->
+<!--底部广告-->
+<section class="m_make_bottom" id="m_make">
+    <span><a href="javascript:;"></a></span>
+    <a href="###"><img src="images/add1.jpg"/></a>
+</section>
+<!--底部广告end-->
+<!--公共底部-->
+<footer class="footer">
+    <div class="centerbox clearfix">
+        <a id="touchUrl" href="http://m.cnmo.com/" class="cur">触屏版</a>
+        <a id="pcUrl" href="http://www.cnmo.com">电脑版</a>
+    </div>
+    <p>
+        京ICP备09081256号 京公网安备：<br> 110108902076
+    </p>
+</footer>
+<!--底部结束-->
+<!--返回顶部-->
+<div id="to_top">
+    <a href="javascript:;"></a>
+</div>
+<!--返回顶部结束-->
+<div id="ceshi"
+     style="position: fixed;top:50px;left: 0;height: 20px;width:100%;line-height: 20px;z-index: 9999;background: rgba(0,0,0,0.5);color: #fff;"></div>
+</body>
+<!--------------------------js----------------------------->
+<script src="js/jquery-2.2.3.min.js"></script>
+<script src="js/base.js"></script>
+</html>

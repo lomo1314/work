@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+
+<!--<ul id="ul1">
+    <li>这里是第一个内容</li>
+    <li>这里是第二个内容，没什么不同</li>
+</ul>-->
+
+
+<ul id="tab">
+    <li>99</li>
+    <li>87</li>
+    <li>90</li>
+    <li>62</li>
+    <li>78</li>
+</ul>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript">
+/*    var ary = ["这里是第一个内容", "这里是第二个内容，没什么不同", "这里是第一个内容",
+        "这里是第二个内容，没什么不同", "这里是第一个内容", "这里是第二个内容，没什么不同"
+        , "这里是第一个内容", "这里是第二个内容，没什么不同", "这里是第一个内容", "这里是第二个内容，没什么不同"
+    ];
+
+    var oUl = document.getElementById("ul1");
+    var oLis = oUl.getElementsByTagName("li");
+
+    var frg = document.createDocumentFragment();
+    for (var i = 0; i < ary.length; i++) {
+        var oLi = document.createElement("li");
+        oLi.innerHTML = ary[i];
+        frg.appendChild(oLi);
+    }
+    oUl.appendChild(frg);*/
+
+
+    // 表格排序 原理
+
+    /*1、想要操作谁，就先获取到谁*/
+    var oUl=document.getElementById("tab");
+    var oLis=oUl.getElementsByTagName("li");
+
+    /*将获取到的这个oLis这个类数组转化成数组，在进行操作*/
+    var oLiAry=utils.listToArray(oLis);
+
+    /*将转化成数组的这个oLiAry数组，进行我们需要的排序*/
+    oLiAry.sort(function(a,b){
+        return parseFloat(a.innerHTML)-parseFloat(b.innerHTML);
+    });
+
+    /*将排序好的这个数组，传入到oUl中 由于oUl 与 oLis存在映射关系，而oUl中的li 与新建的这个oLiAry中的li是相互映射的
+    * 所以 oLiAry 中的这个可以改变 oUl中li 而不是增加 利用for循环将排序好的添加进去*/
+    for(var i=0;i<oLiAry.length;i++){
+        oUl.appendChild(oLiAry[i])
+    }
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+数组去重，优化后， splice（i，0） 解决数组塌陷问题，会使后面的每一项都需要计算，浪费性能，所以直接等于最后一项即可。
+var ary = [1, 2, 3, 3, 3, 2, 3, 1, 2];
+    var obj = {};
+    for (var i = 0; i < ary.length; i++) {
+        var cur = ary[i];
+        if (obj[cur] == cur) {
+            ary[i] = ary[ary.length - 1];
+            ary.length--;
+            i--;
+            continue;
+        }
+        obj[cur] = cur;
+    }
+    obj = null;
+    console.log(ary);
+
+
+
+【冒泡排序】
+    var ary=[22,33,6,8,3,23,43,29];
+    sortAry(ary);
+    console.log(ary);
+
+    function sortAry (ary,type){
+        for (var i=0;i<ary.length-1;i++){
+            for(var j=0;j<ary.length-1-i;j++){
+                if(ary[j]>ary[j+1]){
+                    var temp=ary[j];
+                    ary[j]=ary[j+1];
+                    ary[j+1]=temp;
+                }
+            }
+        }
+        type===1? ary.reverse():void 0;
+    }

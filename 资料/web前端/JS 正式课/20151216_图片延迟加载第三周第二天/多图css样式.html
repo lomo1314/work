@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport"
+            content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
+    <style type="text/css">
+      *{
+          margin: 0;
+          padding: 0;
+          font-size: 14px;
+          font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+      }
+        ul{
+            list-style: none;
+        }
+        img{
+            border: none;
+        }
+        #newsList {
+            margin: 20px 10px;
+        }
+        #newsList li{
+            height: 60px;
+            padding: 10px 0;
+            border-bottom: 1px dashed #0c8f44;
+            position: relative;
+        }
+        #newsList li img{
+            position: absolute;
+            width: 75px;
+            height: 60px;
+        }
+        #newsList div{
+            height: 60px;
+            margin-left: 80px;
+        }
+        #newsList div h2{
+            height: 20px;
+            line-height: 20px;
+
+            overflow:hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        #newsList div p{
+            height: 40px;
+            line-height: 20px;
+
+        }
+    </style>
+</head>
+
+<body>
+<ul id="newsList">
+
+</ul>
+
+<script type="text/javascript" src="js/json.js"></script>
+<script type="text/javascript">
+    function offset(ele){
+        var l=ele.offsetLeft;
+        var t=ele.offsetTop;
+        var p= ele.offsetParent;
+        while(p.tagName.toLocaleLowerCase()!=="body"){
+            if(navigator.userAgent.indexOf("MSIE 8")===-1){
+                l+= p.clientLeft;
+                t+= p.clientTop;
+            }
+            l+= p.offsetLeft;
+            t+= p.offsetTop;
+            p= p.offsetParent;
+        }
+        return {left:l,top:t}
+    }
+
+    var newList=document.getElementById("newsList");
+    var str="";
+    for(var i=0;i<dataAry.length;i++){
+        var cur=dataAry[i];
+        str+="<li>";
+        str+="<img src='img/default.jpg' trueImg='"+cur.logo+"'>";
+        str+="<div>";
+        str+="<h2>"+cur.title+"</h2>";
+        str+="<p>"+cur.desc+"</p>";
+        str+="</div>";
+        str+="</li>";
+    }
+    newList.innerHTML=str;
+
+    var imgList=newList.getElementsByTagName("img");
+    function a(){
+        for(var i=0;i<imgList.length;i++){
+            ~function(i){
+                b(i);
+            }(i)
+        }
+    }
+    var winH=document.documentElement.clientHeight||document.body.clientHeight;
+    function b(i){
+        var curImg=imgList[i];
+        if(curImg.isLoad){return};
+        var winT=(document.documentElement.scrollTop||document.body.scrollTop)+winH;
+        var curImgT=offset(curImg).top+curImg.offsetHeight;
+        if(winT>=curImgT){
+            var trueImg=curImg.getAttribute("trueImg");
+            var oImg=new Image;
+            oImg.src=trueImg;
+            oImg.onload=function(){
+                curImg.src=trueImg;
+                oImg=null;
+                curImg.isload=true;
+            }
+        }
+    }
+
+    window.onscroll=a;
+    window.onscroll();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body, div {
+            margin: 0;
+            padding: 0;
+            font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+            font-size: 16px;
+            -webkit-user-select: none;
+        }
+
+        #code {
+            margin: 50px auto;
+            width: 100px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            border: 1px solid #08BECE;
+            letter-spacing: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="code"></div>
+
+
+<script type="text/javascript">
+
+    var code=document.getElementById("code");
+    var rangeStr="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+//    function getCode(){
+//        var str="";
+//        for(var i=0;i<4;i++){
+//           var ran=Math.round(Math.random()*61);
+//            str+=rangeStr[ran];
+//        }
+//        return str;
+//    }
+//
+//    code.onclick=function(){
+//        code.innerHTML=getCode();
+//    };
+//
+//    code.innerHTML=getCode();
+
+
+    function getCode(){
+        var str="";
+
+        while(str.length<4){
+            var ran=Math.round(Math.random()*61);
+            var temp=rangeStr[ran];
+            if(str.toLowerCase().indexOf(temp.toLowerCase())===-1){
+                str+=temp;
+            }
+
+        }
+
+     return str;
+    }
+
+    code.innerHTML=getCode();
+    code.onclick=function(){
+        code.innerHTML=getCode();
+       };
+
+
+</script>
+
+</body>
+</html>

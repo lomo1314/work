@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body, div, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        #list {
+            margin: 50px auto;
+            width: 500px;
+        }
+
+        #list li {
+            height: 35px;
+            line-height: 35px;
+        }
+
+        /*CSS3新增加的伪选择器*/
+        #list li:nth-child(odd) {
+            background: #ffe470;
+        }
+
+        #list li:nth-child(even) {
+            background: #08BECE;
+        }
+
+        #btnAdd {
+            position: absolute;
+            top: 10px;
+            right: 400px;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            border: 1px solid red;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="btnAdd">+</div>
+<ul id="list">
+    <li></li>
+    <li></li>
+</ul>
+
+
+<script type="text/javascript">
+    var oBt=document.getElementById("btnAdd");
+    var oUl=document.getElementById("list");
+
+    oBt.onclick=function(){
+        var oLis=document.createElement("li");
+        oUl.appendChild(oLis);
+        del();
+    };
+
+    function del(){
+        var oLs=oUl.getElementsByTagName("li");
+        for(var i=0;i<oLs.length;i++){
+            oLs[i].onclick= function () {
+                oUl.removeChild(this);
+            }
+        }
+    }
+
+    del();
+</script>
+</body>
+</html>

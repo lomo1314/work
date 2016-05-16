@@ -1,0 +1,36 @@
+//curEle:要操作的当前的元素,我们获取的是当前元素下的所有的元素子节点
+【获取所有元素子节点】 
+   function children(curEle) {
+        var nodeList = curEle.childNodes, ary = [];
+        for (var i = 0; i < nodeList.length; i++) {
+            var curNode = nodeList[i];
+            curNode.nodeType === 1 ? ary[ary.length] = curNode : null;
+        }
+        return ary;
+    }
+
+    var res = children(oUl);
+    console.log(res.length);
+
+【获取上一个哥哥元素子节点】
+ function prev(curEle) {
+        var pre = curEle.previousSibling;
+        while (pre && pre.nodeType != 1) {//如果上一个哥哥节点存在并且不是我们想要的元素节点，我们就继续向上查找
+            pre = pre.previousSibling;
+        }
+        return pre;
+    }
+
+
+【 获取所有的哥哥元素节点】
+    //jQuery -> prevAll
+    function prevAll(curEle) {
+        var pre = curEle.previousSibling, ary = [];
+        while (pre) {
+            pre.nodeType === 1 ? ary.unshift(pre) : null;
+            pre = pre.previousSibling;
+        }
+        return ary;
+    }
+    var res = prevAll(oLi4);
+    console.log(res);

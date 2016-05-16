@@ -1,0 +1,103 @@
+$.ajax({
+            type: 'post',
+            url: '/salary-bill/ajax-send-salary-bill.html',
+            data:{
+                selected:str,
+                '_csrf': csrf
+            },
+            success: function (data){
+                if (true == data.status){
+                var title="工资条发放成功";
+                var message= '<p class="short-alerts-txt">贵公司'+yearmo+'的工资已经发放成功！';
+                var buttons= [{'title':'确定','class':'confirm'}];
+                popup.open(title,message,buttons,"width:600px;margin-left:-300px");
+                }else {
+                    prompt.show('warning',data.message);
+                }
+            }
+        });
+
+// ajax 另一个实例
+
+
+
+$.ajax({
+        type:"post",
+        url:'/salary-bill/ajax-get-company-salary-bill-setting.html',
+        data:{
+            '_csrf': csrf,
+            'yearmo': yearmo
+        },
+        success:function(data){
+            var datas=data.data;
+            var length=data.data.length
+            if(true == data.status){
+            var isSendPayroll = $("#send-payroll").attr("data-isSendPayroll");
+                var message="<p style='color: #999999;' class='short-alerts-txtthree'>您即将发放"+yearmo+"的工资条，请先设定工资条的科目</p>";
+                for (var i=0;i<length;i++){
+                    var cur=datas[i];
+                    if(cur["selected"]){
+                        message+='<span style="width: 140px;" class="short-alerts-txttwo"><input type="checkbox" value="'+cur["key"]+'" checked="true">'+cur["name"]+"</span>";
+                    }else {
+                        message+='<span style="width: 140px;" class="short-alerts-txttwo"><input type="checkbox" value="'+cur["key"]+'">'+cur["name"]+"</span>";
+                    }
+
+                }
+                message+="<p><input class='all'  type='checkbox' value='全选'>全选</p>";
+                var title='';
+                var buttons= [{'title':'确定','class':'confirm',callback:function() {ajaxSelectResponce();}},{'title':'取消','class':'cancel'}];
+                popup.open(title,message,buttons,"width:600px;margin-left:-300px");
+                var isSendPayroll = $("#send-payroll").attr("data-isSendPayroll")[0];
+              if(!isNaN(isSendPayroll)){
+                var textTwo=document.createElement("span")
+                    textTwo.className="payment-warn"
+                $(textTwo).css({
+                    "float":"left",
+                    "padding":"20px",
+                    "color":"red"
+                });
+                textTwo.innerHTML="您本月已经发放过工资条，请您务必确认需要再次发放!"
+                $(".popup-foot").append(textTwo)
+                    }
+                 var nun=0;
+            var clickEverys=$(".short-alerts-txttwo input[checked='true']");
+            for (var i=0;i<clickEverys.length;i++){
+                var cus=clickEverys[i]
+                if(cus.checked==true){
+                    nun++
+                }
+            }
+            if(nun==length){
+                $("p .all").prop("checked",true)
+            }
+            }else {
+                if(data.message=="请先生成工资表"){
+                    var title="&nbsp"
+                    var message='<p class="short-alerts-txt">贵公司'+yearmo+'的工资表还未生成,请您生成后再试.</p>';
+                    var buttons= [{'title':'确定','class':'confirm',}];
+                    popup.open(title,message,buttons,"width:600px;margin-left:-300px");
+                }else {
+                prompt.show('warning',data.message);
+                }
+            }
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+阻止表单多次提交
+$("form").submit(function(){  
+$(":submit",this).attr("disabled","disabled");  
+}); 

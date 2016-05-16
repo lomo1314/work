@@ -1,0 +1,57 @@
+/*  
+
+Theme Name: BAJA
+
+Theme URI: http://www.mao01.com/
+
+Description: 猫猫工作室出品
+
+Version: 1.0
+
+Author: KYO
+
+Author URI: http://www.mao01.com/
+
+
+*/
+body {padding-top: 75px;font-family: 'Microsoft Yahei', Simsun, Arial,  Helvetica, sans-serif, Tahoma;}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {font-family: 'Microsoft Yahei', Simsun, Arial,  Helvetica, sans-serif, Tahoma; }
+img { border: 0; max-width: 100%; }
+a {color: #333;}
+a:hover { text-decoration: none; color: #E74C3C; }
+.alignleft { float:left;}
+.alignright { float:right;}
+.aligncenter { margin-left:auto; margin-right:auto;display: block; }
+
+#topnav {background: #000;}
+#topnav .navbar-brand {color: #fff; height: 50px;}
+#topnav input.btn {background: #E74C3C; color: #fff; border: 1px solid #E74C3C;}
+#topnav a {color: #fff;}
+#topnav .dropdown-menu > li > a:hover {background: #E74C3C; color: #fff;}
+#topnav .active > a,#topnav a:hover,#topnav .open > a {background: #E74C3C;}
+#topnav .dropdown-menu a {color: #555;}
+#topnav .dropdown .caret {border-top-color: #fff;border-bottom-color: #fff;}
+
+.post-list {position: relative;}
+span.remove {position: absolute; right: -15px; top:-18px; color: #E74C3C; cursor: pointer; font-size: 30px;}
+#post-list .panel-footer {background: #fff;}
+#post-list .panel-footer ul {margin-bottom: 0; color: #555;}
+#post-list .panel-footer ul i,#post-info i {padding-right: 4px; color: #aaa;}
+
+#sidebar .panel {position: relative;}
+#sidebar .panel .panel-heading {background: #fff; font-size: 16px;}
+#sidebar .panel ul {padding: 10px 15px; margin: 0;}
+#sidebar .panel li {list-style: circle; list-style-position: inside; line-height: 25px;}
+#sidebar .panel .textwidget {padding: 10px 15px; line-height: 20px;}
+
+footer {padding: 25px 0; border-top:1px solid #ddd;}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {background-color: #E74C3C;border-color: #E74C3C;}
+
+#content {margin-bottom: 25px;}
+#content h1 {border-bottom: 1px solid #ddd; padding-bottom: 10px;}
+#post-info {margin-bottom: 20px;}
+#comment .media {border-bottom: 1px dashed #ddd; padding-bottom: 15px;}
+#comment .pull-left {width: 60px; height: 60px; overflow: hidden;}
+#comment .form-inline {margin-left: 15px;}
+#comment .btn-primary {background-color: #E74C3C;border-color: #E74C3C;}

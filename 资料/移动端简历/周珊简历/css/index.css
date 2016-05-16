@@ -1,0 +1,479 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#main{
+    width: 640px;
+    height: 960px;
+    position: absolute;
+    left:50%;
+    top:0;
+    margin-left: -320px;
+    -webkit-transform-origin: top;
+}
+.slide li{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+}
+.slide li:nth-child(1){
+    background: url(../images/b.png) no-repeat;
+}
+.slide li:nth-child(2){
+    background:url(../images/BG.png) no-repeat;
+}
+.slide li:nth-child(3){
+    background: url(../images/BG.png) no-repeat;
+}
+.slide li:nth-child(4){
+    background: url(../images/BG.png) no-repeat;
+}
+.slide li:nth-child(5){
+
+    background: url(../images/BG.png) no-repeat;
+}
+.slide li:nth-child(6){
+    background: #757575;
+}
+.zIndex{
+    z-index: 111;
+}
+.a1{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom:15%;
+    color: #fff;
+    line-height: 26px;
+    font-size: 20px;
+}
+.a1 img{
+    width: 208px;
+    height: 268px;
+    border:10px solid rgba(255,255,255,0.5);
+    border-radius: 50%;
+    position: absolute;
+    left:60%;
+    top:-130%;
+}
+.a1 p:nth-child(1){
+    -webkit-transform: translate(-500px,0);
+}
+.a1 p:nth-child(3){
+    -webkit-transform: translate(-500px,0);
+}
+.a1 p:nth-child(2){
+    -webkit-transform: translate(500px,0);
+}
+.a1 p:nth-child(4){
+    -webkit-transform: translate(500px,0);
+}
+#a1 p{
+    -webkit-transform: translate(0,0);
+    -webkit-transition: 1s;
+    font-size: 30px;
+   margin: 10px;
+
+}
+@-webkit-keyframes rotate {
+    0%{
+        -webkit-transform: rotate(0deg) scale(0.2);
+    }
+    100%{
+        -webkit-transform:rotate(720deg) scale(1)
+    }
+}
+#a1 img{
+    -webkit-animation:rotate 1s ease-in-out ;
+}
+/*工作经历*/
+.a2 {
+    position: relative;
+    margin: 0 10px;
+    height: 100%;
+}
+
+.a2 div {
+    position: absolute;
+    top: 2%;
+    left: -150%;
+    width: 100%;
+    height: 22.5%;
+    background: #fff;
+    opacity: 0.5;
+}
+
+#a2 div:nth-child(2) {
+    top: 26.5%;
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+}
+
+#a2 div:nth-child(3) {
+    top: 51%;
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+}
+
+#a2 div:nth-child(4) {
+    top: 75.5%;
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+}
+
+#a2 div.move {
+    -webkit-animation-name: myMove;
+    animation-name: myMove;
+
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+
+    /*-webkit-animation: myMove 1s linear; /!*infinite*!/*/
+    /*animation: myMove 1s linear;*/
+
+    /*当动画模拟完成后让当前元素的位置停留在最后一帧的位置*/
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes myMove {
+    25% {
+        left: -75%;
+    }
+    50%, 100% {
+        left: 0;
+    }
+    75% {
+        left: 75%;
+    }
+}
+
+@keyframes myMove {
+    25% {
+        left: -75%;
+    }
+    50%, 100% {
+        left: 0;
+    }
+    75% {
+        left: 75%;
+    }
+}
+
+/*分界线*/
+.a3 p{
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    left:50%;
+    top:50%;
+    margin-top: -45px;
+    margin-left: -45px;
+    -webkit-transform: rotate(0deg);
+}
+.a3 p:nth-child(1){
+    background: url(../images/c1.png) no-repeat;
+}
+.a3 p:nth-child(2){
+    background: url(../images/c2.png) no-repeat;
+}
+.a3 p:nth-child(3){
+    background: url(../images/c3.png) no-repeat;
+}
+.a3 p:nth-child(4){
+    background: url(../images/c4.png) no-repeat;
+}
+.a3 p:nth-child(5){
+    background: url(../images/c5.png) no-repeat;
+}
+.a3 p:nth-child(6){
+    background: url(../images/c6.png) no-repeat;
+}
+.a3 p:nth-child(7){
+    box-shadow: 1px 1px 10px rgba(255,255,255,0.8);
+    color: #fff;
+    line-height: 25px;
+    border-radius: 5px;
+    width: 0;
+    height:0;
+    position: absolute;
+    overflow: hidden;
+}
+.a3 p:nth-child(8){
+    box-shadow: 1px 1px 10px rgba(255,255,255,0.8);
+    color: #fff;
+    line-height: 25px;
+    border-radius: 5px;
+    width: 0;
+    height:0;
+    position: absolute;
+    overflow: hidden;
+}
+.a3 div:nth-child(9){
+    position: absolute;
+    border:8px solid yellow;
+    left: 30%;
+    top: 7%;
+}
+
+#a3 p:nth-child(1) {
+    left: 50%;
+    top: 30%;
+}
+#a3 p:nth-child(2) {
+    left: 20%;
+    top:40%;
+}
+#a3 p:nth-child(3){
+    left: 80%;
+    top: 40%;
+}
+#a3 p:nth-child(4){
+    left: 20%;
+    top:60%;
+}
+#a3 p:nth-child(5){
+     left: 80%;
+     top: 60%;
+ }
+#a3 p:nth-child(6){
+    left: 50%;
+    top: 70%;
+}
+#a3 p:nth-child(7){
+   left:10%;
+    top: 70%;
+    width: 200px;
+    height: 300px;
+    font-size: 20px;
+
+}
+#a3 p:nth-child(8){
+    left:73%;
+    top: 70%;
+    width: 200px;
+    height: 300px;
+    font-size: 20px;
+
+}
+#a3 p{
+    -webkit-transform: rotate(360deg);
+    -webkit-transition:all 1s;
+}
+@-webkit-keyframes zoomIn {
+    0%{
+        -webkit-transform: scale(0.2);
+    }
+    100%{
+        -webkit-transform:scale(1);
+    }
+}
+#a3 div img{
+    -webkit-animation:zoomIn 1s ease-in-out ;
+}
+
+
+
+.a4 p{
+    box-shadow: 1px 1px 10px rgba(255,255,255,0.8);
+     background: #CCCCCC;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    overflow: hidden;
+
+}
+.a4 img{
+    position: absolute;
+    left:30%;
+    top: 20%;
+}
+@-webkit-keyframes slideLeft {
+    0%{
+        -webkit-transform: translate(-500px ,0);
+    }
+    100%{
+        -webkit-transform: translate(0,0);
+    }
+}
+#a4 img{
+    -webkit-animation:slideLeft 1s ease-in-out ;
+}
+
+.a4 p:nth-child(1){
+    left: 20%;
+    bottom: 15%;
+}
+.a4 p:nth-child(2){
+    left: 40%;
+    bottom: 15%;
+}
+.a4 p:nth-child(3){
+    left: 60%;
+    bottom: 15%;
+}
+.a4 p:nth-child(4){
+    left: 16%;
+    bottom: 15%;
+}
+.a4 p:nth-child(5){
+    left: 16%;
+    bottom: 14%;
+}
+
+#a4 p{
+    width: 100px;
+    height: 200px;
+    /*-webkit-transition: 1s;*/
+}
+#a4 p:nth-child(1){
+    width: 23px;
+    height: 50px;
+    -webkit-transition: 1s;
+}
+#a4 p:nth-child(2){
+    width: 23px;
+    height: 80px;
+    -webkit-transition: 2s;
+}
+#a4 p:nth-child(3){
+    width: 23px;
+    height: 120px;
+    -webkit-transition: 2.5s;
+}
+#a4 p:nth-child(4){
+    width: 5px;
+    height: 260px;
+}
+#a4 p:nth-child(5){
+    width: 400px;
+    height: 5px;
+}
+.a4 span{
+    position: absolute;
+    font-size: 40px;
+
+    color: white;
+    display: inline-block;
+    overflow: hidden;
+
+}
+.a4 span:nth-child(6){
+    -webkit-transform: translate(-500px,0);
+
+}
+.a4 span:nth-child(7){
+
+    -webkit-transform: translate(-500px,0);
+}
+.a4 span:nth-child(8){
+    -webkit-transform: translate(-500px,0);
+}
+.a4 span:nth-child(9){
+    -webkit-transform: translate(50px,-800px);
+}
+.a4 span:nth-child(10){
+    -webkit-transform: translate(40px,-800px);
+}
+#a4 span:nth-child(6){
+    -webkit-transform: translate(0,0);
+    -webkit-transition: 0.5s;
+    left: 20%;
+    bottom: 8%;
+    text-shadow:5px 2px 6px #000
+}
+#a4 span:nth-child(7){
+    -webkit-transform: translate(0,0);
+    -webkit-transition: 0.5s;
+    left: 40%;
+    bottom: 8%;
+    text-shadow:5px 2px 6px #000
+}
+#a4 span:nth-child(8){
+    -webkit-transform: translate(0,0);
+    -webkit-transition: 0.5s;
+    left: 60%;
+    bottom: 8%;
+    text-shadow:5px 2px 6px #000
+}
+#a4 span:nth-child(9){
+    -webkit-transform: translate(0,0);
+    -webkit-transition: 0.5s;
+    font-size: 30px;
+    left: 5%;
+    bottom: 36%;
+    text-shadow:5px 2px 6px #000;
+}
+#a4 span:nth-child(10){
+    -webkit-transform: translate(0,0);
+    -webkit-transition: 0.5s;
+    font-size: 30px;
+    left: 75%;
+    bottom: 8%;
+    text-shadow:5px 2px 6px #000;
+}
+.a5{
+    width: 460px;
+    height: 220px;
+    background: url(../images/jieshao.png) no-repeat center;
+    position: absolute;
+    left:50%;
+    margin-left: -230px;
+    bottom:20%;
+}
+.a5title{
+    position: absolute;
+    width: 160px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    top: 52%;
+    left: 4%;
+    background:#CCCCCC;
+    font-size: 30px;
+    color: white;
+}
+#a5{
+    -webkit-transform: rotateY(720deg);
+    -webkit-transition:1s;
+}
+.a6 p:nth-child(1){
+    font-size: 60px;
+    color: white;
+    left: 30%;
+    top: 50%;
+    position: absolute;
+
+}
+.a6 span:nth-child(2){
+
+    left: 48%;
+    bottom: 5%;
+    position: absolute;
+
+}
+.a6 span:before{
+    content: "";
+    width: 15px;
+    height:15px;
+    border-right:4px solid #fff;
+    border-top:4px solid #fff;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    position: absolute;
+    left:45%;
+    bottom:120% ;
+}

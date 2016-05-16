@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body, div {
+            margin: 0;
+            padding: 0;
+            font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+            font-size: 14px;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #div1 {
+            margin: 100px;
+            padding: 30px;
+            width: 200px;
+            height: 200px;
+            line-height: 25px;
+            border: 10px solid #08BECE;
+            overflow: hidden;
+
+            opacity: 0.5;
+            filter: alpha(opacity=50.0); /*在IE下设置元素的透明度不是使用opacity,而是使用filter*/
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script src="utils.js"></script>
+<script>
+    var oDiv=document.getElementById("div1");
+    var a = utils.getCss(oDiv, "opacity");
+    console.log(a);
+</script>
+</body>
+</html>
