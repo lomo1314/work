@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style  type="text/css">
+        .out{
+            /*height:100%;*/
+            /*width:100%;*/
+            max-width: 1583px;
+            min-width:  1210px
+            min-height:798px;
+            /*position:relative;*/
+            /*overflow: hidden;*/
+        }
+        .select_1{
+
+            height:100%;
+            width:100%;
+            position:absolute;
+            top:0;
+            left:0;
+        }
+        .select_2{
+
+            height:100%;
+            width:100%;
+            position:absolute;
+            top:0;
+            left:0;
+        }
+        .select_3{
+
+            height:100%;
+            width:100%;
+            position:absolute;
+            top:0;
+            left:0;
+        }
+        .select_4{
+
+            height:100%;
+            width:100%;
+            position:absolute;
+            top:0;
+            left:0;
+        }
+        .tab li{
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            margin-bottom: 4px;
+            background-color: yellow;
+            cursor: pointer;
+
+        }
+        .tab{
+            z-index: 20;
+            position: fixed;
+            top:350px;
+            right:15px;
+        }
+        .tab .selector{
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            margin-bottom: 4px;
+
+            cursor: pointer;
+
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <ul id="tab" class="tab">
+        <li class="selector"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+<div id="out" class="out" style="overflow: hidden;">
+    <div id="box" class="select_1" style="background: url('images/BJ1.png');background-size: cover;">
+    </div>
+    <div id="box1" class="select_2" style="background: url('images/BJ2.png');background-size: cover;">
+    </div>
+    <div id="box2" class="select_3" style="background: url('images/BJ3.png');background-size: cover;">
+    </div>
+    <div id="box3" class="select_4" style="background: url('images/BJ4.png');background-size: cover;">
+    </div>
+</div>
+    <!--caozuo-->
+<script type="text/javascript">
+    var oTab=document.getElementById("tab");
+    var oTbList= oTab.querySelectorAll("li");
+    var oOut= document.getElementById("out");
+    var oDivs = oOut.querySelectorAll("div");
+    var flag
+        UtilsEvent={
+            addHandler:function(curEle,type,handler){
+                if(curEle.addEventListener){
+                    curEle.addEventListener(type,handler,false);
+                }else if(curEle.attachEvent){
+                    curEle.attachEvent("on"+type,handler)
+                } else{
+                    curEle["on"+type]=handler;
+                }
+            },
+            removeHandler:function(curEle,type,handler){
+                if(curEle.removeEventListener){
+                    curEle.removeEventListener(type,handler,false)
+                    }else if(curEle.detachEvent){
+                    curEle.detachEvent("on"+type,handler);
+                }else{
+                    curEle["on"+type]=null;
+                }
+                },
+            getEvent:function(event){
+             return event? event:window.event;
+            },
+            getTarget:function(event){
+            return event.target||event.srcElement;
+            }
+        };
+    UtilsEvent.addHandler(oTab,"click",function(event){
+        event=  UtilsEvent.getEvent(event);
+        var target=UtilsEvent.getTarget(event);
+        for(var i=0;i<oDivs.length;i++){
+            oDivs[i].style.zIndex = 0;
+            oTbList[i].className=""
+        }
+      switch (target){
+          case oTbList[0] : oDivs[0].style.zIndex=12;oTbList[0].className="selector";
+              break;
+          case oTbList[1]:  oDivs[1].style.zIndex=12;oTbList[1].className="selector";
+              break;
+          case oTbList[2]:  oDivs[2].style.zIndex=12;oTbList[2].className="selector";
+              break;
+          case oTbList[3]:  oDivs[3].style.zIndex=12;oTbList[3].className="selector";
+              break;
+          default :false;
+      }
+
+    })
+    UtilsEvent.addHandler(document,"mousewheel",function(event){
+        event=  UtilsEvent.getEvent(event);
+        for(var i=0;i<oDivs.length;i++) {
+            var curLi= document.getElementsByClassName("selector")[0];
+            if(curLi == oTbList[i]){
+                flag=i;
+            }
+            oDivs[i].style.zIndex = 0;
+            oTbList[i].className = ""
+        }
+        var mousewheel=event.wheelDelta;
+        if(mousewheel==-120){
+            if(flag<oTbList.length-1){
+                flag++;
+                oTbList[flag].className="selector";
+                oDivs[flag].style.zIndex=12;
+            }else if(flag==oTbList.length-1){
+                oDivs[3].style.zIndex=12;
+                oTbList[flag].className="selector";
+            }
+        }
+        else if(mousewheel==120){
+            if(flag>0){
+                flag--;
+                oTbList[flag].className="selector";
+                oDivs[flag].style.zIndex=12;
+            }else if(flag==0){
+                oDivs[0].style.zIndex=12;
+                oTbList[0].className="selector";
+            }
+        }
+    })
+
+</script>
+    <!--donghua -->
+ <script type="text/javascript">
+        var scrollUl=document.getElementById("scrollUl");
+        var scrollLis=scrollUl.querySelectorAll("li");
+        var scrollEffect ={
+            Linear: function (t, b, c, d) {
+                return c * t / d + b;
+            },
+            Bounce: {
+                easeIn: function (t, b, c, d) {
+                    return c - scrollEffect.Bounce.easeOut(d - t, 0, c, d) + b;
+                },
+                easeOut: function (t, b, c, d) {
+                    if ((t /= d) < (1 / 2.75)) {
+                        return c * (7.5625 * t * t) + b;
+                    } else if (t < (2 / 2.75)) {
+                        return c * (7.5625 * (t -= (1.5 / 2.75)) * t + .75) + b;
+                    } else if (t < (2.5 / 2.75)) {
+                        return c * (7.5625 * (t -= (2.25 / 2.75)) * t + .9375) + b;
+                    } else {
+                        return c * (7.5625 * (t -= (2.625 / 2.75)) * t + .984375) + b;
+                    }
+                },
+                easeInOut: function (t, b, c, d) {
+                    if (t < d / 2) {
+                        return scrollEffect.Bounce.easeIn(t * 2, 0, c, d) * .5 + b;
+                    }
+                    return scrollEffect.Bounce.easeOut(t * 2 - d, 0, c, d) * .5 + c * .5 + b;
+                }
+            }
+        }
+        //    <!- 执行动画-->
+        function moveToTip (target,duration, destination, callback) {
+            var fnEffect = scrollEffect.Bounce. easeOut;//->默认是匀速的运动
+            var times = 0, interval =15, oBegin =0, oChange = 0;
+            oBegin= getElementTop(target);//->获取并且记录当前方向的起始位置的值
+            oChange= destination - oBegin;//->用传递进来当前方向的目标中减去起始的值等于我们当前方向的总距离
+            var move = function () {
+                window.clearTimeout(target.timer);
+                times += interval;//->每一次执行都记录一下当前已经运动的时间
+                if (times+interval >= duration) {
+                    document.documentElement.scrollTop = document.body.scrollTop=destination;
+                    typeof callback === "function" ? callback.call(target) : null;
+                    return;
+                }
+                var curVal = fnEffect(times, oBegin, oChange, duration);
+                document.documentElement.scrollTop = document.body.scrollTop=curVal;
+                target.timer = window.setTimeout(move,interval);
+            };
+            move();
+        }
+
+    </script>
+</body>
+</html>
